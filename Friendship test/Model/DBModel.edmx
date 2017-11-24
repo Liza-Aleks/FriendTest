@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище FriendTestModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_question" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Vk" Type="varchar(max)" Nullable="false" />
+          <Property Name="Test" Type="int" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Person" Type="int" Nullable="false" />
+          <Property Name="ID_Answer" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="ID_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="ID_Answer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище FriendTestModelContainer">
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Answer" Association="Self.FK_Test_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Person" Association="Self.FK_Test_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FriendTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_question" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_Test_Answer" FromRole="Answer" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vk" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Test" Type="Int32" />
+          <NavigationProperty Name="Test1" Relationship="Self.FK_Test_Person" FromRole="Person" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Person" Type="Int32" Nullable="false" />
+          <Property Name="ID_Answer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Test_Answer" FromRole="Test" ToRole="Answer" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Test_Person" FromRole="Test" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="ID_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="ID_Answer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FriendTestEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answer" EntityType="Self.Answer" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Question" EntityType="Self.Question" />
+          <EntitySet Name="Test" EntityType="Self.Test" />
+          <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Answer" Association="Self.FK_Test_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Person" Association="Self.FK_Test_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FriendTestModelContainer" CdmEntityContainer="FriendTestEntities1">
+          <EntitySetMapping Name="Answer">
+            <EntityTypeMapping TypeName="FriendTestModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_question" ColumnName="ID_question" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="FriendTestModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Vk" ColumnName="Vk" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question">
+            <EntityTypeMapping TypeName="FriendTestModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test">
+            <EntityTypeMapping TypeName="FriendTestModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="ID_Answer" ColumnName="ID_Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
