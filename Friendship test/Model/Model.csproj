@@ -67,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DBUsage.cs" />
     <Compile Include="Person.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
