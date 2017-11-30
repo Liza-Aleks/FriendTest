@@ -28,14 +28,14 @@ namespace Friendship_test
             InitializeComponent();
         }
 
-        private void buttonSignIN_Click(object sender, RoutedEventArgs e)
-        {
-            wnd.Registration.Content = new SignIN();
-        }
-
         private void buttonRegistration_Click(object sender, RoutedEventArgs e)
         {
             wnd.Registration.Content = new Registration();
+        }
+
+        private void buttonSignIN_Click(object sender, RoutedEventArgs e)
+        {
+            wnd.Registration.Content = new SignIN();
         }
     }
 }
