@@ -34,8 +34,8 @@ namespace Friendship_test
         {
 
             string a = "wd";
-            Test wnd = new Test(this);
-            wnd.Show();
+            
+          
 
             foreach (var item in people)
             {

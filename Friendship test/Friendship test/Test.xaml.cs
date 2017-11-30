@@ -24,10 +24,10 @@ namespace Friendship_test
         DBUsage q = new DBUsage();
         FriendTestEntities1 db = new FriendTestEntities1();
 
-        SignIN wnd;
-        public Test(SignIN w)
+       
+        public Test()
         {
-            wnd = w;
+        
             InitializeComponent();
             Main.Content = new Page1();
         }
