@@ -27,25 +27,10 @@ namespace Friendship_test
         public MainWindow()
         {
             InitializeComponent();
+            Registration.Content = new FriendshipTest(this);
             
         }
 
-        private void button5_Click(object sender, RoutedEventArgs e)
-        {
-            string a ="wd";
-            foreach (var item in people)
-            {
-                if (item.Login == a && item.Password == a)
-                {
-                    Test wnd = new Test(this);
-                    wnd.Show();
-                }
-
-                else
-                    MessageBox.Show("Your login or passoword is incorrect");
-            }
-           
-
-        }
+       
     }
 }
