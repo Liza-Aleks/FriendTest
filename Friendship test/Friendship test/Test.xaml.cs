@@ -17,11 +17,16 @@ namespace Friendship_test
     /// <summary>
     /// Логика взаимодействия для Test.xaml
     /// </summary>
+
+   
     public partial class Test : Window
     {
-        public Test()
+        MainWindow wnd;
+        public Test(MainWindow w)
         {
+            wnd = w;
             InitializeComponent();
+            Main.Content = new Page1();
         }
     }
 }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Friendship_test"
         mc:Ignorable="d"
-        Title="Test" Height="300" Width="300">
+        Title="Test" Height="600" Width="800">
     <Grid>
-        
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

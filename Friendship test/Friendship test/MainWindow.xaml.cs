@@ -24,5 +24,12 @@ namespace Friendship_test
         {
             InitializeComponent();
         }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            Test wnd = new Test(this);
+            wnd.Show();
+
+        }
     }
 }
