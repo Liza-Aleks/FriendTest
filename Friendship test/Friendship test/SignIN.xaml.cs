@@ -24,18 +24,21 @@ namespace Friendship_test
         DBUsage q = new DBUsage();
         FriendTestEntities1 db = new FriendTestEntities1();
         List<Person> people = new List<Person>();
-
-        public SignIN()
+        MainWindow wnd;
+        public SignIN(MainWindow w)
         {
+            wnd = w;
             InitializeComponent();
         }
 
         private void buttonSignIN_Click(object sender, RoutedEventArgs e)
         {
-
-            string a = "wd";
             
-          
+            string a = "wd";
+            Test t = new Test();
+            t.Show();
+            wnd.Close();
+
 
             foreach (var item in people)
             {
@@ -48,6 +51,11 @@ namespace Friendship_test
                 else
                     MessageBox.Show("Your login or passoword is incorrect");
             }
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            wnd.Registration.Content = new FriendshipTest(wnd);
         }
     }
 }

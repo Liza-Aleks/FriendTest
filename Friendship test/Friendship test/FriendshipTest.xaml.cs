@@ -30,12 +30,12 @@ namespace Friendship_test
 
         private void buttonRegistration_Click(object sender, RoutedEventArgs e)
         {
-            wnd.Registration.Content = new Registration();
+            wnd.Registration.Content = new Registration(wnd);
         }
 
         private void buttonSignIN_Click(object sender, RoutedEventArgs e)
         {
-            wnd.Registration.Content = new SignIN();
+            wnd.Registration.Content = new SignIN(wnd);
         }
     }
 }

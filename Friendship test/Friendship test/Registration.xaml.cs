@@ -20,14 +20,21 @@ namespace Friendship_test
     /// </summary>
     public partial class Registration : Page
     {
-        public Registration()
+        MainWindow wnd;
+        public Registration(MainWindow w)
         {
+            wnd = w;
             InitializeComponent();
         }
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
           
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            wnd.Registration.Content = new FriendshipTest(wnd);
         }
     }
 }
