@@ -1,0 +1,31 @@
+﻿<Page x:Class="Friendship_test.CreateTest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Friendship_test"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="CreateTest">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Label x:Name="labelQuestion" FontSize="20" Grid.ColumnSpan="2" Content="Выберите вопрос, а затем ответ. Всего 10 вопросов." Margin="20"/>
+		<Label x:Name="labelAnswer" FontSize="20" Content="Варианты ответа:" Grid.Column="2" Margin="20"/>
+		<ListBox x:Name="listBoxQuestions" Grid.ColumnSpan="2" Margin="20" Grid.Row="1"/>
+		<ListBox x:Name="listBoxAnswers" Grid.Column="2" Margin="20" Grid.Row="1"/>
+		<Button x:Name="buttonBack" FontSize="24" Content="Назад" Margin="20" Grid.Row="2"/>
+		<Button x:Name="buttonEnd" FontSize="24" Content="Завершить тест" Grid.Column="1" Margin="20" Grid.Row="2"/>
+		<Button x:Name="buttonChoose" FontSize="24" Content="Подвердить ответ" Grid.Column="2" Margin="20" Grid.Row="2"/>
+
+	</Grid>
+</Page>

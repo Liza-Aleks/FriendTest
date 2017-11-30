@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Friendship_test
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для CreateTest.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class CreateTest : Page
     {
-        public Page1()
+        public CreateTest()
         {
             InitializeComponent();
-        }
-
-        private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

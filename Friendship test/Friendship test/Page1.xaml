@@ -22,11 +22,11 @@
         <Image x:Name="image" Margin="20,10" />
         <ListBox x:Name="listBoxAllFriends" Margin="10,20,10,10" Grid.Row="1"/>
         <ListBox x:Name="listBoxTop" Grid.ColumnSpan="2" Grid.Column="1" Margin="10,20,10,10" Grid.Row="1"/>
-        <Label x:Name="label" Content="Имя:" FontSize="30" Grid.Column="1" Margin="10,31,10,113"/>
-        <Label x:Name="labelName" FontSize="25" Grid.Column="2" Margin="0,31,10,113"/>
+        <Label x:Name="label" Content="Имя:" FontSize="30" Grid.Column="1" Margin="10,30,10,100"/>
+		<Label x:Name="labelName" FontSize="25" Grid.Column="2" Margin="10,30,10,100"/>
         <Button x:Name="buttonGoTo" FontSize="30" Content="Перейти" Margin="20" Grid.Row="2"/>
-        <Button x:Name="buttonBack" FontSize="30" Content="Назад" Grid.Column="1" Margin="10,20,10,0" Grid.Row="2" Height="53" VerticalAlignment="Top"/>
-        <Button x:Name="buttonCreateTest" Visibility="Visible" FontSize="30" Content="Создать тест" Grid.Column="2" Margin="30,20,20,20" Grid.Row="2"/>
+        <Button x:Name="buttonBack" FontSize="30" Content="Назад" Grid.Column="1" Margin="10,20,10,20" Grid.Row="2"/>
+        <Button x:Name="buttonCreateTest" Visibility="Visible" FontSize="30" Content="Создать тест" Grid.Column="2" Margin="30,20,20,20" Grid.Row="2" Click="buttonCreateTest_Click"/>
 
     </Grid>
 </Page>
