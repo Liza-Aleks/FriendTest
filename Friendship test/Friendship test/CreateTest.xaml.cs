@@ -18,8 +18,10 @@ namespace Friendship_test
     /// <summary>
     /// Логика взаимодействия для CreateTest.xaml
     /// </summary>
+    
     public partial class CreateTest : Page
     {
+      
         public CreateTest()
         {
             InitializeComponent();

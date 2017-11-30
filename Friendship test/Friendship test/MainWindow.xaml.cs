@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,16 +21,16 @@ namespace Friendship_test
     /// </summary>
     public partial class MainWindow : Window
     {
+        DBUsage q = new DBUsage();
+        FriendTestEntities1 db = new FriendTestEntities1();
+      
         public MainWindow()
         {
             InitializeComponent();
+            Registration.Content = new FriendshipTest(this);
+            
         }
 
-        private void button5_Click(object sender, RoutedEventArgs e)
-        {
-            Test wnd = new Test(this);
-            wnd.Show();
-
-        }
+       
     }
 }

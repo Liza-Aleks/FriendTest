@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,28 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Friendship_test
 {
     /// <summary>
-    /// Логика взаимодействия для Test.xaml
+    /// Логика взаимодействия для Registration.xaml
     /// </summary>
-
-    public partial class Test : Window
+    public partial class Registration : Page
     {
-        DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
-
-        SignIN wnd;
-        public Test(SignIN w)
+        public Registration()
         {
-            wnd = w;
             InitializeComponent();
-            Main.Content = new Page1();
         }
 
-
-
+        private void buttonOK_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
     }
 }
