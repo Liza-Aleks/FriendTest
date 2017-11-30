@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,9 +19,11 @@ namespace Friendship_test
     /// Логика взаимодействия для Test.xaml
     /// </summary>
 
-   
     public partial class Test : Window
     {
+        DBUsage q = new DBUsage();
+        FriendTestEntities1 db = new FriendTestEntities1();
+
         MainWindow wnd;
         public Test(MainWindow w)
         {
@@ -28,5 +31,8 @@ namespace Friendship_test
             InitializeComponent();
             Main.Content = new Page1();
         }
+
+
+
     }
 }

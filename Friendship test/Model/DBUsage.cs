@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class DBUsage
+   public class DBUsage
     {
 
         FriendTestEntities1 db = new FriendTestEntities1();

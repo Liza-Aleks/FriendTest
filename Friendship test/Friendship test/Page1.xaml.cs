@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,12 @@ namespace Friendship_test
     /// </summary>
     public partial class Page1 : Page
     {
+        DBUsage q = new DBUsage();
+        FriendTestEntities1 db = new FriendTestEntities1();
+
         public Page1()
         {
+
             InitializeComponent();
         }
     }
