@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,22 +16,13 @@ using System.Windows.Shapes;
 namespace Friendship_test
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для CreateTest.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class CreateTest : Page
     {
-        DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
-
-        public Page1()
+        public CreateTest()
         {
-
             InitializeComponent();
-        }
-
-        private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
