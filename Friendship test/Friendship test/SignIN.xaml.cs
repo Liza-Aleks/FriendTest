@@ -33,24 +33,21 @@ namespace Friendship_test
 
         private void buttonSignIN_Click(object sender, RoutedEventArgs e)
         {
-            
-            string a = "wd";
-            Test t = new Test();
-            t.Show();
-            wnd.Close();
-
-
+            people = q.ShowPerson();
+            bool a = false;
             foreach (var item in people)
-            {
-                if (item.Login == a && item.Password == a)
+            {  
+                if (item.Login == textBoxLogin.Text && item.Password == passwordBox.Password)
                 {
-                    // Test wnd = new Test(this);
-                    // wnd.Show();
+                    Test t = new Test();
+                    t.Show();
+                    wnd.Close();
+                    a = true;
                 }
-
-                else
-                    MessageBox.Show("Your login or passoword is incorrect");
             }
+
+            if (a == false)
+                MessageBox.Show("Your login or password is incorrect");
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)

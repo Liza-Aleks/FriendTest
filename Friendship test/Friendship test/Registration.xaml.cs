@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,9 @@ namespace Friendship_test
     /// </summary>
     public partial class Registration : Page
     {
+        DBUsage q = new DBUsage();
+        FriendTestEntities1 db = new FriendTestEntities1();
+        List<Person> people = new List<Person>();
         MainWindow wnd;
         public Registration(MainWindow w)
         {
@@ -29,7 +33,27 @@ namespace Friendship_test
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-          
+            people = q.ShowPerson();
+            foreach (var item in people)
+            {
+                if (item.Login == textBoxLogin.Text)
+                    MessageBox.Show("Этот логин уже используется");
+                else if (item.Vk == textBoxVK.Text)
+                    MessageBox.Show("Вы уже зарегистрированы в системе");
+                else if (textBoxLogin.Text == "" || textBoxVK.Text == "" || passwordBoxFirst.Password == "" || passwordBoxSecond.Password == "")
+                    MessageBox.Show("Все поля должны быть заполнены");
+                else if (passwordBoxFirst.Password != passwordBoxSecond.Password)
+                    MessageBox.Show("Вы ввели разные пароли");
+                else
+                {
+                    Person p = new Person { Login = textBoxLogin.Text, Name = "Имя", Password = passwordBoxFirst.Password, Test = 1 };
+                    q.AddPerson(p);
+                    MessageBox.Show("Регистрация пройдена успешно");
+                    Test test = new Test();
+                    test.Show();
+                    wnd.Close();
+                }
+            }
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)

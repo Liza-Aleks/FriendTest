@@ -23,9 +23,9 @@ namespace Friendship_test
     {
         DBUsage q = new DBUsage();
         FriendTestEntities1 db = new FriendTestEntities1();
-        List<Person> people = new List<Person>();
         public MainWindow()
         {
+           
             InitializeComponent();
             Registration.Content = new FriendshipTest(this);
             

@@ -27,9 +27,9 @@ namespace Model
             return questions;
         }
 
-        public void AddPerson(Person per)
+        public void AddPerson(Person p)
         {
-            db.Person.Add(per);
+            db.Person.Add(p);
             db.SaveChanges();
         }
     }
