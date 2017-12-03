@@ -19,12 +19,12 @@ namespace Friendship_test
     /// <summary>
     /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Profile : Page
     {
         DBUsage q = new DBUsage();
         FriendTestEntities1 db = new FriendTestEntities1();
 
-        public Page1()
+        public Profile()
         {
 
             InitializeComponent();

@@ -29,7 +29,7 @@ namespace Friendship_test
         {
         
             InitializeComponent();
-            Main.Content = new Page1();
+            Main.Content = new Profile();
         }
 
 

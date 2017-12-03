@@ -46,7 +46,7 @@ namespace Friendship_test
                     MessageBox.Show("Вы ввели разные пароли");
                 else
                 {
-                    Person p = new Person { Login = textBoxLogin.Text, Name = "Имя", Password = passwordBoxFirst.Password, Test = 1 };
+                    Person p = new Person { Login = textBoxLogin.Text, Name = "Имя",Vk=textBoxVK.Text ,Password = passwordBoxFirst.Password, Test = 1 };
                     q.AddPerson(p);
                     MessageBox.Show("Регистрация пройдена успешно");
                     Test test = new Test();
