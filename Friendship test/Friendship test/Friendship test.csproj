@@ -151,6 +151,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassesLibrary\ClassesLibrary.csproj">
+      <Project>{4B65396C-6112-4FEA-9E26-3E5AE30DA429}</Project>
+      <Name>ClassesLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8D3CBA4F-A648-48AF-B398-B27BF565BC83}</Project>
       <Name>Model</Name>
