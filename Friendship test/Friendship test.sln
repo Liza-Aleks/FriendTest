@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Friendship test", "Friendship test\Friendship test.csproj", "{EE87FFCD-4719-459F-8C73-3E3B6420FEE2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8D3CBA4F-A648-48AF-B398-B27BF565BC83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassesLibrary", "ClassesLibrary\ClassesLibrary.csproj", "{4B65396C-6112-4FEA-9E26-3E5AE30DA429}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8D3CBA4F-A648-48AF-B398-B27BF565BC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D3CBA4F-A648-48AF-B398-B27BF565BC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D3CBA4F-A648-48AF-B398-B27BF565BC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B65396C-6112-4FEA-9E26-3E5AE30DA429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B65396C-6112-4FEA-9E26-3E5AE30DA429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B65396C-6112-4FEA-9E26-3E5AE30DA429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B65396C-6112-4FEA-9E26-3E5AE30DA429}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
