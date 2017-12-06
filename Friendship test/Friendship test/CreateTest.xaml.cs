@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,20 @@ namespace Friendship_test
     /// <summary>
     /// Логика взаимодействия для CreateTest.xaml
     /// </summary>
+
     
     public partial class CreateTest : Page
     {
-      
+
+        DBUsage q = new DBUsage();
+        FriendTestEntities1 db = new FriendTestEntities1();
+        List<Question> questions = new List<Question>();
         public CreateTest()
         {
+            questions = q.ShowQuestions();
+            listBoxQuestions.ItemsSource = questions;
             InitializeComponent();
+
         }
     }
 }

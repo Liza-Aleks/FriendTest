@@ -23,13 +23,16 @@ namespace Friendship_test
     {
         DBUsage q = new DBUsage();
         FriendTestEntities1 db = new FriendTestEntities1();
-
+       public Person per = new Person();
        
-        public Test()
+        public Test(Person p)
         {
-        
+            per = p;
             InitializeComponent();
-            Main.Content = new Profile();
+            Main.Content = new Profile(per);
+
+            
+         
         }
 
 

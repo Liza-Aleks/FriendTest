@@ -52,7 +52,7 @@ namespace Friendship_test
                     Person p = new Person { Login = textBoxLogin.Text, Name = "Имя",Vk=textBoxVK.Text ,Password = pass.ToString(), Test = 1 };
                     q.AddPerson(p);
                     MessageBox.Show("Регистрация пройдена успешно");
-                    Test test = new Test();
+                    Test test = new Test(p);
                     test.Show();
                     wnd.Close();
                 }
