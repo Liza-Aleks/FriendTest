@@ -23,7 +23,7 @@ namespace Friendship_test
     {
         MainWindow wnd;
         DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
+        FriendTestEntities db = new FriendTestEntities();
         List<Person> people = new List<Person>();
         Person p = new Person();
 

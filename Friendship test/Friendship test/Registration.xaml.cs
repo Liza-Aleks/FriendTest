@@ -23,7 +23,6 @@ namespace Friendship_test
     public partial class Registration : Page
     {
         DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
         List<Person> people = new List<Person>();
         MainWindow wnd;
         public Registration(MainWindow w)

@@ -13,10 +13,10 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FriendTestEntities1 : DbContext
+    public partial class FriendTestEntities : DbContext
     {
-        public FriendTestEntities1()
-            : base("name=FriendTestEntities1")
+        public FriendTestEntities()
+            : base("name=FriendTestEntities")
         {
         }
     
@@ -28,6 +28,8 @@ namespace Model
         public virtual DbSet<Answer> Answer { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<Question> Question { get; set; }
+        public virtual DbSet<Result> Result { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Test> Test { get; set; }
     }
 }

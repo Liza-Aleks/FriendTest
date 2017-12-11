@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-   public class DBUsage 
+     public class DBUsage
     {
-
-        FriendTestEntities1 db = new FriendTestEntities1();
+        FriendTestEntities db = new FriendTestEntities();
 
         public List<Person> ShowPerson()
         {
@@ -32,5 +31,7 @@ namespace Model
             db.Person.Add(p);
             db.SaveChanges();
         }
+
+
     }
 }

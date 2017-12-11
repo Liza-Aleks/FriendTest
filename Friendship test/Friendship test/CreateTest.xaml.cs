@@ -25,7 +25,7 @@ namespace Friendship_test
     {
 
         DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
+        FriendTestEntities db = new FriendTestEntities();
         List<Question> questions = new List<Question>();
         public CreateTest()
         {

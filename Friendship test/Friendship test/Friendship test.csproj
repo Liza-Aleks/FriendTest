@@ -156,7 +156,7 @@
       <Name>ClassesLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{8D3CBA4F-A648-48AF-B398-B27BF565BC83}</Project>
+      <Project>{0CC93B38-F876-45F5-A154-431A49D86383}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
