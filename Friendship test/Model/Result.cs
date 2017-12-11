@@ -12,15 +12,14 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Test
+    public partial class Result
     {
         public int ID { get; set; }
-        public int ID_Person { get; set; }
-        public int ID_Question { get; set; }
-        public int ID_Answer { get; set; }
+        public int ID_PersonQuestioner { get; set; }
+        public int ID_PersonRespondent { get; set; }
+        public int Points { get; set; }
     
-        public virtual Answer Answer { get; set; }
         public virtual Person Person { get; set; }
-        public virtual Question Question { get; set; }
+        public virtual Person Person1 { get; set; }
     }
 }

@@ -12,15 +12,12 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Test
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public int ID_Person { get; set; }
-        public int ID_Question { get; set; }
-        public int ID_Answer { get; set; }
-    
-        public virtual Answer Answer { get; set; }
-        public virtual Person Person { get; set; }
-        public virtual Question Question { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

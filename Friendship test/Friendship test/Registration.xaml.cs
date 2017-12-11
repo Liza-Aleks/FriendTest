@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using ClassesLibrary;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,6 @@ namespace Friendship_test
     public partial class Registration : Page
     {
         DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
         List<Person> people = new List<Person>();
         MainWindow wnd;
         public Registration(MainWindow w)
@@ -33,6 +33,7 @@ namespace Friendship_test
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
+            int pass = 0;
             people = q.ShowPerson();
             foreach (var item in people)
             {
@@ -46,10 +47,11 @@ namespace Friendship_test
                     MessageBox.Show("Вы ввели разные пароли");
                 else
                 {
-                    Person p = new Person { Login = textBoxLogin.Text, Name = "Имя",Vk=textBoxVK.Text ,Password = passwordBoxFirst.Password, Test = 1 };
+                    pass = Hashing.makeHash(passwordBoxFirst.Password);
+                    Person p = new Person { Login = textBoxLogin.Text, Name = "Имя",Vk=textBoxVK.Text ,Password = pass.ToString(), Test = 1 };
                     q.AddPerson(p);
                     MessageBox.Show("Регистрация пройдена успешно");
-                    Test test = new Test();
+                    Test test = new Test(p);
                     test.Show();
                     wnd.Close();
                 }

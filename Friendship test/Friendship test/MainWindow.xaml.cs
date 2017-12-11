@@ -22,7 +22,7 @@ namespace Friendship_test
     public partial class MainWindow : Window
     {
         DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
+        FriendTestEntities db = new FriendTestEntities();
         public MainWindow()
         {
            

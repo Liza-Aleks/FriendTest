@@ -18,6 +18,7 @@ namespace Model
         public Question()
         {
             this.Answer = new HashSet<Answer>();
+            this.Test = new HashSet<Test>();
         }
     
         public int ID { get; set; }
@@ -25,5 +26,7 @@ namespace Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Test> Test { get; set; }
     }
 }

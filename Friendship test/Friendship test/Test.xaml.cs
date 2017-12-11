@@ -21,15 +21,17 @@ namespace Friendship_test
 
     public partial class Test : Window
     {
-        DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
-
+       DBUsage q = new DBUsage();
+       public Person per = new Person();
        
-        public Test()
+        public Test(Person p)
         {
-        
+            per = p;
             InitializeComponent();
-            Main.Content = new Profile();
+            Main.Content = new Profile(per);
+
+            
+         
         }
 
 

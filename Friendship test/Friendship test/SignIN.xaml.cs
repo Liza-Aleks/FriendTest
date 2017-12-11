@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using ClassesLibrary;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,6 @@ namespace Friendship_test
     public partial class SignIN : Page
     {
         DBUsage q = new DBUsage();
-        FriendTestEntities1 db = new FriendTestEntities1();
         List<Person> people = new List<Person>();
         MainWindow wnd;
         public SignIN(MainWindow w)
@@ -33,13 +33,17 @@ namespace Friendship_test
 
         private void buttonSignIN_Click(object sender, RoutedEventArgs e)
         {
+            int pass = 0;
+            Person p = new Person();
+            pass = Hashing.makeHash(passwordBox.Password);
             people = q.ShowPerson();
             bool a = false;
             foreach (var item in people)
             {  
-                if (item.Login == textBoxLogin.Text && item.Password == passwordBox.Password)
+                if (item.Login == textBoxLogin.Text && item.Password == pass.ToString())
                 {
-                    Test t = new Test();
+                    p = item;
+                    Test t = new Test(p);
                     t.Show();
                     wnd.Close();
                     a = true;
@@ -47,7 +51,7 @@ namespace Friendship_test
             }
 
             if (a == false)
-                MessageBox.Show("Your login or password is incorrect");
+                MessageBox.Show("Неправильный логин или пароль");
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
