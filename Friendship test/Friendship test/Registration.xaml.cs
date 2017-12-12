@@ -34,28 +34,43 @@ namespace Friendship_test
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             int pass = 0;
+            bool flag = false;
             people = q.ShowPerson();
             foreach (var item in people)
             {
                 if (item.Login == textBoxLogin.Text)
-                    MessageBox.Show("Этот логин уже используется");
-                else if (item.Vk == textBoxVK.Text)
-                    MessageBox.Show("Вы уже зарегистрированы в системе");
-                else if (textBoxLogin.Text == "" || textBoxVK.Text == "" || passwordBoxFirst.Password == "" || passwordBoxSecond.Password == "")
-                    MessageBox.Show("Все поля должны быть заполнены");
-                else if (passwordBoxFirst.Password != passwordBoxSecond.Password)
-                    MessageBox.Show("Вы ввели разные пароли");
-                else
                 {
-                    pass = Hashing.makeHash(passwordBoxFirst.Password);
-                    Person p = new Person { Login = textBoxLogin.Text, Name = "Имя",Vk=textBoxVK.Text ,Password = pass.ToString(), Test = 1 };
-                    q.AddPerson(p);
-                    MessageBox.Show("Регистрация пройдена успешно");
-                    Test test = new Test(p);
-                    test.Show();
-                    wnd.Close();
+                    MessageBox.Show("Этот логин уже используется");
+                    flag = true;
+                }
+
+                else if (item.Vk == textBoxVK.Text)
+                {
+                    MessageBox.Show("Вы уже зарегистрированы в системе");
+                    flag = true;
+                }
+                else if (textBoxLogin.Text == "" || textBoxVK.Text == "" || passwordBoxFirst.Password == "" || passwordBoxSecond.Password == "")
+                {
+                    MessageBox.Show("Все поля должны быть заполнены");
+                    flag = true;
+                }
+                else if (passwordBoxFirst.Password != passwordBoxSecond.Password)
+                {
+                    MessageBox.Show("Вы ввели разные пароли");
+                    flag = true;
                 }
             }
+            if (flag == false)
+            {
+                pass = Hashing.makeHash(passwordBoxFirst.Password);
+                Person p = new Person { Login = textBoxLogin.Text, Name = "Имя", Vk = textBoxVK.Text, Password = pass.ToString(), Test = 1 };
+                q.AddPerson(p);
+                MessageBox.Show("Регистрация пройдена успешно");
+                Test test = new Test(p);
+                test.Show();
+                wnd.Close();
+            }
+            
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
