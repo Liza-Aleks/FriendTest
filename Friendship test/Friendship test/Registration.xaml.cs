@@ -29,6 +29,7 @@ namespace Friendship_test
         {
             wnd = w;
             InitializeComponent();
+            textBoxLogin.Focus();
         }
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
@@ -76,6 +77,38 @@ namespace Friendship_test
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             wnd.Registration.Content = new FriendshipTest(wnd);
+        }
+
+        private void textBoxLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                passwordBoxFirst.Focus();
+            }
+        }
+
+        private void passwordBoxFirst_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                passwordBoxSecond.Focus();
+            }
+        }
+
+        private void passwordBoxSecond_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                textBoxVK.Focus();
+            }
+        }
+
+        private void textBoxVK_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonOK_Click(sender, e);
+            }
         }
     }
 }
