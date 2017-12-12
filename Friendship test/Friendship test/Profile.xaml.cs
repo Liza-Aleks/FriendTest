@@ -34,12 +34,18 @@ namespace Friendship_test
             InitializeComponent();
             people = q.ShowPerson();
             labelName.Content = p.Name;
+            listBoxAllFriends.ItemsSource = db.Person.ToList();
            
         }
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
         {
             t.Main.Content = new CreateTest(t,p);
+        }
+
+        private void listBoxAllFriends_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            buttonGoTo.IsEnabled = true;
         }
     }
 }
