@@ -39,7 +39,7 @@ namespace Friendship_test
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
         {
-            t.Main.Content = new CreateTest();
+            t.Main.Content = new CreateTest(t,p);
         }
     }
 }
