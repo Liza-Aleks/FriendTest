@@ -21,14 +21,15 @@ namespace Friendship_test
     /// </summary>
     public partial class Profile : Page
     {
-        MainWindow wnd;
+        Test t;
         DBUsage q = new DBUsage();
         FriendTestEntities db = new FriendTestEntities();
         List<Person> people = new List<Person>();
         Person p = new Person();
 
-        public Profile(Person per)
+        public Profile(Person per, Test tes)
         {
+            t = tes;
             p = per;
             InitializeComponent();
             people = q.ShowPerson();
@@ -38,8 +39,7 @@ namespace Friendship_test
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
         {
-            wnd.Content = new CreateTest();
-            
+            t.Main.Content = new CreateTest();
         }
     }
 }

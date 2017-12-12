@@ -28,7 +28,7 @@ namespace Friendship_test
         {
             per = p;
             InitializeComponent();
-            Main.Content = new Profile(per);
+            Main.Content = new Profile(per,this);
 
             
          

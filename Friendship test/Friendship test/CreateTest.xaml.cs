@@ -26,12 +26,11 @@ namespace Friendship_test
 
         DBUsage q = new DBUsage();
         FriendTestEntities db = new FriendTestEntities();
-        List<Question> questions = new List<Question>();
         public CreateTest()
         {
-            questions = q.ShowQuestions();
-            listBoxQuestions.ItemsSource = questions;
             InitializeComponent();
+            listBoxQuestions.ItemsSource = db.Question.ToList();
+            
 
         }
     }
