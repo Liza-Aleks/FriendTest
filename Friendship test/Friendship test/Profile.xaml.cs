@@ -47,5 +47,11 @@ namespace Friendship_test
         {
             buttonGoTo.IsEnabled = true;
         }
+
+        private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            AddQuestion wnd = new AddQuestion();
+            wnd.Show();
+        }
     }
 }
