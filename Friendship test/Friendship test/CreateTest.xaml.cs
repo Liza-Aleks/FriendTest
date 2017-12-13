@@ -42,14 +42,24 @@ namespace Friendship_test
         {
             if (listBoxQuestions.SelectedItem != null)
             {
-                buttonChoose.IsEnabled = false;
-                listBoxAnswers.Items.Clear();
                 Question q = (Question)listBoxQuestions.SelectedItem;
-                foreach (var item in db.Answer.ToList())
+                listBoxAnswers.Items.Clear();
+                Model.Test tryy = new Model.Test();
+                tryy = db.Test.ToList().Find(x => x.ID_Person == p.ID && x.ID_Question == q.ID);
+                if (db.Test.ToList().Contains(tryy))
                 {
-                    if(q.ID == item.ID_question)
+                    MessageBox.Show("Вы уже выбрали этот вопрос!");
+                }
+                else
+                {
+                    buttonChoose.IsEnabled = false;
+                    listBoxAnswers.Items.Clear();
+                    foreach (var item in db.Answer.ToList())
                     {
-                        listBoxAnswers.Items.Add(item);
+                        if (q.ID == item.ID_question)
+                        {
+                            listBoxAnswers.Items.Add(item);
+                        }
                     }
                 }
             }
@@ -86,6 +96,16 @@ namespace Friendship_test
 
 
 
+        }
+
+        private void buttonEnd_Click(object sender, RoutedEventArgs e)
+        {
+            t.Main.Content = new Profile(p,t);
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Завершите тест!!!");
         }
     }
 }

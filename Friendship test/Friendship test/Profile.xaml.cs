@@ -35,6 +35,8 @@ namespace Friendship_test
             people = q.ShowPerson();
             labelName.Content = p.Name;
             listBoxAllFriends.ItemsSource = db.Person.ToList();
+
+           
            
         }
 
