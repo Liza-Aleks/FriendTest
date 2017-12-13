@@ -9,9 +9,9 @@ using ClassesLibrary.Classes;
 
 namespace ClassesLibrary
 {
-    class VKParser
+    public class VKParser
     {
-        public  async Task<IEnumerable<User>> GetFriends(string screenName)
+        public async Task<IEnumerable<User>> GetFriends(string screenName)
         {
             using (var client = new HttpClient())
             {
@@ -40,6 +40,5 @@ namespace ClassesLibrary
                 return user;
             }
         }
-        
     }
 }

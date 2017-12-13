@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ClassesLibrary.Classes
 {
-    class Response
+    public class Response
     {
         [JsonProperty("response")]
         public List<User> Users { get; set; }
