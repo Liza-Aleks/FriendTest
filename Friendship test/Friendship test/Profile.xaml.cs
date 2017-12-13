@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassesLibrary;
 
 namespace Friendship_test
 {
@@ -26,6 +27,7 @@ namespace Friendship_test
         FriendTestEntities db = new FriendTestEntities();
         List<Person> people = new List<Person>();
         Person p = new Person();
+        VKParser VKParser = new VKParser();
 
         public Profile(Person per, Test tes)
         {
@@ -36,7 +38,6 @@ namespace Friendship_test
             labelName.Content = p.Name;
             listBoxAllFriends.ItemsSource = db.Person.ToList();
 
-           
            
         }
 
