@@ -8,19 +8,19 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Page1">
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="1.5*"/>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="3.5*"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="278*"/>
-			<ColumnDefinition Width="127*"/>
-			<ColumnDefinition Width="395*"/>
-		</Grid.ColumnDefinitions>
-		<Image x:Name="image" Margin="20,10,20,10" Grid.RowSpan="2" />
+    <Grid Loaded="Grid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="278*"/>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="395*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="image" Margin="20,10,20,10" Grid.RowSpan="2" Stretch="UniformToFill" />
         <ListBox x:Name="listBoxAllFriends" FontSize="24"  Margin="20,0" Grid.Row="2" SelectionChanged="listBoxAllFriends_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -33,14 +33,15 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <Button x:Name="button" Content="Button" Height="100" Width="75"/>
         </ListBox>
         <ListBox x:Name="listBoxTop" FontSize="24" Grid.ColumnSpan="2" Grid.Column="1" Margin="10,0,20,0" Grid.Row="2"/>
-		<Label x:Name="label" Content="Имя:" FontSize="30" Grid.Column="1" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-		<Label x:Name="labelName" FontSize="30" Grid.Column="2" Margin="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-		<Button x:Name="buttonGoTo" IsEnabled="False" FontSize="24" Content="Перейти" Margin="20" Grid.Row="3" Click="buttonGoTo_Click"/>
-		<Button x:Name="buttonBack" FontSize="24" Content="Выйти" Grid.Column="1" Margin="10,20,10,20" Grid.Row="3" Click="buttonBack_Click"/>
-		<Button x:Name="buttonCreateTest" Visibility="Visible" FontSize="24" Content="Создать тест" Grid.Column="2" Margin="20" Grid.Row="3" Click="buttonCreateTest_Click"/>
-		<Button x:Name="buttonAddQuestion" Visibility="Visible" FontSize="24" Content="Добавить вопрос" Grid.Column="1" Grid.ColumnSpan="2" Margin="20" Grid.Row="1" Click="buttonAddQuestion_Click"/>
+        <Label x:Name="label" Content="Имя:" FontSize="30" Grid.Column="1" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelName" FontSize="30" Grid.Column="2" Margin="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <Button x:Name="buttonGoTo" IsEnabled="False" FontSize="24" Content="Перейти" Margin="20" Grid.Row="3" Click="buttonGoTo_Click"/>
+        <Button x:Name="buttonBack" FontSize="24" Content="Выйти" Grid.Column="1" Margin="10,20,10,20" Grid.Row="3" Click="buttonBack_Click"/>
+        <Button x:Name="buttonCreateTest" Visibility="Visible" FontSize="24" Content="Создать тест" Grid.Column="2" Margin="20" Grid.Row="3" Click="buttonCreateTest_Click"/>
+        <Button x:Name="buttonAddQuestion" Visibility="Visible" FontSize="24" Content="Добавить вопрос" Grid.Column="1" Grid.ColumnSpan="2" Margin="20" Grid.Row="1" Click="buttonAddQuestion_Click"/>
 
-	</Grid>
+    </Grid>
 </Page>

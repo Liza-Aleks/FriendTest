@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassesLibrary;
+using ClassesLibrary.Classes;
 
 namespace Friendship_test
 {
@@ -44,22 +45,8 @@ namespace Friendship_test
             else
              buttonCreateTest.Visibility = Visibility.Visible;
 
-            VK();
+            
           
-        }
-
-        private async void VK()
-        {
-            try
-            {
-                Title = "Loading...";
-                listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk);
-                Title = "VK Friends";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
         }
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
@@ -87,10 +74,25 @@ namespace Friendship_test
         {
             if (listBoxAllFriends.SelectedItem != null)
             {
-                Person friend = (Person)listBoxAllFriends.SelectedItem;
+                User userfriend = (User)listBoxAllFriends.SelectedItem;
+                string temp = userfriend.FirstName + " " + userfriend.LastName; 
+                Person friend = db.Person.ToList().Find(x => x.Name == temp);
+           
                 label.Name = friend.Name;
                 listBoxTop.ItemsSource = db.Result.ToList();
             }
+        }
+
+     
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            listBoxAllFriends.Items.Clear();
+            listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
+            //BitmapImage bi = new BitmapImage();
+            //bi.UriSource = new Uri(user.PhotoUrl.ToString());
+            //image.Source = bi;
+
         }
     }
 }

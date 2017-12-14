@@ -25,6 +25,8 @@ namespace Friendship_test
         DBUsage q = new DBUsage();
         List<Person> people = new List<Person>();
         MainWindow wnd;
+        VKParser VKParser = new VKParser();
+
         public Registration(MainWindow w)
         {
             wnd = w;
@@ -32,7 +34,7 @@ namespace Friendship_test
             textBoxLogin.Focus();
         }
 
-        private void buttonOK_Click(object sender, RoutedEventArgs e)
+        private async void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             int pass = 0;
             bool flag = false;
@@ -64,7 +66,9 @@ namespace Friendship_test
             if (flag == false)
             {
                 pass = Hashing.makeHash(passwordBoxFirst.Password);
-                Person p = new Person { Login = textBoxLogin.Text, Name = "Имя", Vk = textBoxVK.Text, Password = pass.ToString(), Test = 1 };
+                var user = await VKParser.GetUser(textBoxVK.Text);
+                string newname =  user.FirstName + " " + user.LastName;
+                Person p = new Person { Login = textBoxLogin.Text, Name = newname, Vk = textBoxVK.Text, Password = pass.ToString(), Test = 1 };
                 q.AddPerson(p);
                 MessageBox.Show("Регистрация пройдена успешно");
                 Test test = new Test(p);
