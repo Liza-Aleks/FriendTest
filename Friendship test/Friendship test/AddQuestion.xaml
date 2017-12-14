@@ -20,15 +20,17 @@
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
-		<ListBox x:Name="listBoxQuestions" FontSize="14" IsEnabled="False" Margin="10" Grid.Row="1" Grid.RowSpan="4"/>
+		<ListBox x:Name="listBoxQuestions" DisplayMemberPath="Text" FontSize="10" Margin="10" Grid.Row="1" Grid.RowSpan="4"/>
 		<ListBox x:Name="listBoxAnswers" FontSize="14" Grid.Column="2" Margin="10" Grid.Row="1" Grid.RowSpan="4"/>
 		<Label x:Name="label" FontSize="18" Content="Вопросы в системе:" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		<Label x:Name="label1" FontSize="18" Content="Новый вопрос:" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		<Label x:Name="label2" FontSize="18" Content="Ответы:" Grid.Column="2" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-		<Label x:Name="label3" FontSize="18" Content="Новый ответ:" Grid.Column="1" Grid.Row="2" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-		<TextBox x:Name="textBox" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-		<TextBox x:Name="textBox2" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
-		<Button x:Name="button" FontSize="18" Content="Добавить ответ" Grid.Column="1" Margin="10" Grid.Row="4"/>
-		<Button x:Name="button1" FontSize="18" Grid.ColumnSpan="3" Content="Завершить создание вопроса" Margin="140, 10" Grid.Row="5"/>
+		<Label x:Name="label3" FontSize="18" Content="Новый ответ:" Grid.Column="1" Grid.Row="3" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<TextBox x:Name="textBoxQuestion" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+		<TextBox x:Name="textBoxAnswer" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+		<Button x:Name="buttonAddQuestion" FontSize="18" Content="Добавить вопрос" Grid.Column="1" Margin="10" Grid.Row="2" Click="buttonAddQuestion_Click"/>
+		<Button x:Name="buttonBack" FontSize="18" Content="Назад" Grid.Column="0" Margin="10" Grid.Row="5"/>
+		<Button x:Name="buttonAddAnswer" IsEnabled="False" FontSize="18" Content="Добавить ответ" Grid.Column="1" Margin="10" Grid.Row="5" Click="buttonAddAnswer_Click"/>
+		<Button x:Name="buttonEnd" IsEnabled="False" FontSize="18" Content="Завершить" Margin="10" Grid.Column="2" Grid.Row="5" Click="buttonEnd_Click"/>
 	</Grid>
 </Window>

@@ -28,6 +28,7 @@ namespace Friendship_test
         List<Person> people = new List<Person>();
         Person p = new Person();
         VKParser VKParser = new VKParser();
+        
 
         public Profile(Person per, Test tes)
         {

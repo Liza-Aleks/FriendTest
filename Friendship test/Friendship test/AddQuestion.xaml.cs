@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,42 @@ namespace Friendship_test
     /// </summary>
     public partial class AddQuestion : Window
     {
+        FriendTestEntities db = new FriendTestEntities();
         public AddQuestion()
         {
             InitializeComponent();
+            listBoxQuestions.ItemsSource = db.Question.ToList();
+        }
+
+        private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxQuestion.Text.Length<10)
+            {
+                MessageBox.Show("Введите нормальный вопрос!");
+            }
+            else
+            {
+                buttonAddQuestion.IsEnabled = false;
+                buttonAddAnswer.IsEnabled = true;
+                textBoxQuestion.IsEnabled = false;
+            }
+        }
+
+        private void buttonAddAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            string answer;
+            answer = textBoxAnswer.Text;
+            listBoxAnswers.Items.Add(answer);
+            textBoxAnswer.Clear();
+            if (listBoxAnswers.Items.Count>=2)
+            {
+                buttonEnd.IsEnabled = true;
+            }
+        }
+
+        private void buttonEnd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
