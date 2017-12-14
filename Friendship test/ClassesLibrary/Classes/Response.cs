@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 
 namespace ClassesLibrary.Classes
 {
-    //class Response
-    //{
-    //    [JsonProperty("response")]
-    //    public List<User> Users { get; set; }
-    //}
+    class Response
+    {
+        [JsonProperty("response")]
+        public List<User> Users { get; set; }
+    }
 }
