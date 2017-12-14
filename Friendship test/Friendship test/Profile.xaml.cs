@@ -90,10 +90,10 @@ namespace Friendship_test
 
             listBoxAllFriends.Items.Clear();
             listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
-            //BitmapImage bi = new BitmapImage();
-            //bi.UriSource = new Uri(user.PhotoUrl.ToString());
-            //image.Source = bi;
-
+            var user = await VKParser.GetUserInfo(p.Vk);
+         
+            image.Source = new BitmapImage(new Uri(user.PhotoUrl));
+            
         }
     }
 }

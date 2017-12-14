@@ -20,7 +20,7 @@
             <ColumnDefinition Width="127*"/>
             <ColumnDefinition Width="395*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="image" Margin="20,10,20,10" Grid.RowSpan="2" Stretch="UniformToFill" />
+        <Image x:Name="image" Margin="20,10,20,10" Grid.RowSpan="2" />
         <ListBox x:Name="listBoxAllFriends" FontSize="24"  Margin="20,0" Grid.Row="2" SelectionChanged="listBoxAllFriends_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
