@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassesLibrary;
+using ClassesLibrary.Classes;
 
 namespace Friendship_test
 {
@@ -37,9 +38,16 @@ namespace Friendship_test
             InitializeComponent();
             people = q.ShowPerson();
             labelName.Content = p.Name;
-            listBoxAllFriends.ItemsSource = db.Person.ToList();
+            Model.Test tryy = new Model.Test();
+            tryy = db.Test.ToList().Find(x => x.ID_Person==p.ID);
 
-           
+            if (db.Test.ToList().Contains(tryy))
+             buttonCreateTest.Visibility = Visibility.Hidden;
+            else
+             buttonCreateTest.Visibility = Visibility.Visible;
+
+            
+          
         }
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
@@ -56,6 +64,36 @@ namespace Friendship_test
         {
             AddQuestion wnd = new AddQuestion();
             wnd.Show();
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            t.Close();
+        }
+
+        private void buttonGoTo_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxAllFriends.SelectedItem != null)
+            {
+                User userfriend = (User)listBoxAllFriends.SelectedItem;
+                string temp = userfriend.FirstName + " " + userfriend.LastName; 
+                Person friend = db.Person.ToList().Find(x => x.Name == temp);
+           
+                label.Name = friend.Name;
+                listBoxTop.ItemsSource = db.Result.ToList();
+            }
+        }
+
+     
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            listBoxAllFriends.Items.Clear();
+            listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
+            //BitmapImage bi = new BitmapImage();
+            //bi.UriSource = new Uri(user.PhotoUrl.ToString());
+            //image.Source = bi;
+
         }
     }
 }
