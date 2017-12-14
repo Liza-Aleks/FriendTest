@@ -36,9 +36,30 @@ namespace Friendship_test
             InitializeComponent();
             people = q.ShowPerson();
             labelName.Content = p.Name;
-            listBoxAllFriends.ItemsSource = db.Person.ToList();
+            Model.Test tryy = new Model.Test();
+            tryy = db.Test.ToList().Find(x => x.ID_Person==p.ID);
 
-           
+            if (db.Test.ToList().Contains(tryy))
+             buttonCreateTest.Visibility = Visibility.Hidden;
+            else
+             buttonCreateTest.Visibility = Visibility.Visible;
+
+            VK();
+          
+        }
+
+        private async void VK()
+        {
+            try
+            {
+                Title = "Loading...";
+                listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk);
+                Title = "VK Friends";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
@@ -55,6 +76,21 @@ namespace Friendship_test
         {
             AddQuestion wnd = new AddQuestion();
             wnd.Show();
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            t.Close();
+        }
+
+        private void buttonGoTo_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxAllFriends.SelectedItem != null)
+            {
+                Person friend = (Person)listBoxAllFriends.SelectedItem;
+                label.Name = friend.Name;
+                listBoxTop.ItemsSource = db.Result.ToList();
+            }
         }
     }
 }
