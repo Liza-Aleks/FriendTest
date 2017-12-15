@@ -8,40 +8,45 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Page1">
 
-    <Grid Loaded="Grid_Loaded">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3.5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="278*"/>
-            <ColumnDefinition Width="127*"/>
-            <ColumnDefinition Width="395*"/>
-        </Grid.ColumnDefinitions>
-        <Image x:Name="image" Margin="20,10,20,10" Grid.RowSpan="2" Stretch="UniformToFill" />
-        <ListBox x:Name="listBoxAllFriends" FontSize="24"  Margin="20,0" Grid.Row="2" SelectionChanged="listBoxAllFriends_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Height="50" Width="50" Source="{Binding PhotoUrl}" Stretch="UniformToFill"/>
-                        <TextBlock VerticalAlignment="Center" Margin="10 0 0 0">
+	<Grid Loaded="Grid_Loaded">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.75*"/>
+			<RowDefinition Height="0.75*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="3.5*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*"/>
+			<ColumnDefinition Width="1.3*"/>
+			<ColumnDefinition Width="3*"/>
+			<ColumnDefinition Width="0.7*"/>
+		</Grid.ColumnDefinitions>
+		<Image x:Name="image" Margin="20,10,20,9.667" Grid.RowSpan="3" Stretch="UniformToFill" />
+		<ListBox x:Name="listBoxAllFriends" FontSize="24"  Margin="20,0.333,20,85" Grid.Row="3" SelectionChanged="listBoxAllFriends_SelectionChanged" Grid.RowSpan="2">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Image Height="50" Width="50" Source="{Binding PhotoUrl}" Stretch="UniformToFill"/>
+						<TextBlock VerticalAlignment="Center" Margin="10 0 0 0">
                             <TextBlock FontSize="15" Text="{Binding LastName}"/>
                             <TextBlock FontSize="15" Text="{Binding FirstName}"/>
                         </TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <Button x:Name="button" Content="Button" Height="100" Width="75"/>
-        </ListBox>
-        <ListBox x:Name="listBoxTop" FontSize="24" Grid.ColumnSpan="2" Grid.Column="1" Margin="10,0,20,0" Grid.Row="2"/>
-        <Label x:Name="label" Content="Имя:" FontSize="30" Grid.Column="1" Margin="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelName" FontSize="30" Grid.Column="2" Margin="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-        <Button x:Name="buttonGoTo" IsEnabled="False" FontSize="24" Content="Перейти" Margin="20" Grid.Row="3" Click="buttonGoTo_Click"/>
-        <Button x:Name="buttonBack" FontSize="24" Content="Выйти" Grid.Column="1" Margin="10,20,10,20" Grid.Row="3" Click="buttonBack_Click"/>
-        <Button x:Name="buttonCreateTest" Visibility="Visible" FontSize="24" Content="Создать тест" Grid.Column="2" Margin="20" Grid.Row="3" Click="buttonCreateTest_Click"/>
-        <Button x:Name="buttonAddQuestion" Visibility="Visible" FontSize="24" Content="Добавить вопрос" Grid.Column="1" Grid.ColumnSpan="2" Margin="20" Grid.Row="1" Click="buttonAddQuestion_Click"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+			<Button x:Name="button" Content="Button" Height="100" Width="75"/>
+		</ListBox>
+		<ListBox x:Name="listBoxTop" FontSize="24" Grid.ColumnSpan="3" Grid.Column="1" Margin="10,0.333,20,85" Grid.Row="3" Grid.RowSpan="2"/>
+		<Label x:Name="labelN" Content="Имя:" FontSize="30" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label x:Name="labelName" FontSize="28" Grid.Column="2" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+		<Label x:Name="labelS" Content="Статус:" FontSize="30" Grid.Column="1" Grid.Row="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label x:Name="labelStatus" FontSize="20" FontStyle="Italic" Grid.Column="2" Margin="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label x:Name="labelOnline" FontSize="28" Grid.Column="3" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+		<Button x:Name="buttonGoTo" IsEnabled="False" FontSize="24" Content="Перейти" Margin="20,20.333,20,20" Grid.Row="4" Click="buttonGoTo_Click"/>
+		<Button x:Name="buttonBack" FontSize="24" Content="Выйти" Grid.Column="1" Margin="10,20.333,10.333,20" Grid.Row="4" Click="buttonBack_Click"/>
+		<Button x:Name="buttonCreateTest" Visibility="Visible" FontSize="24" Content="Создать тест" Grid.Column="2" Margin="19.667,20.333,20,20" Grid.Row="4" Click="buttonCreateTest_Click" Grid.ColumnSpan="2"/>
+		<Button x:Name="buttonAddQuestion" Visibility="Visible" FontSize="24" Content="Добавить вопрос" Grid.Column="1" Grid.ColumnSpan="3" Margin="20,20.333,20,19.667" Grid.Row="2" Click="buttonAddQuestion_Click"/>
 
-    </Grid>
+	</Grid>
 </Page>

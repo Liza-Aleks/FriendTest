@@ -32,12 +32,23 @@ namespace Model
             db.SaveChanges();
         }
 
-        public void AddQuestion(Test t)
+        public void AddQuestionAboutPerson(Test t)
         {
             db.Test.Add(t);
             db.SaveChanges();
         }
 
+        public void AddQuestionToDB(Question q)
+        {
+            db.Question.Add(q);
+            db.SaveChanges();
+        }
+
+        public void AddAnswerToDB(Answer a)
+        {
+            db.Answer.Add(a);
+            db.SaveChanges();
+        }
 
     }
 }

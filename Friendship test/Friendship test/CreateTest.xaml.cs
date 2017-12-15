@@ -82,7 +82,7 @@ namespace Friendship_test
                     Answer answ = (Answer)listBoxAnswers.SelectedItem;
                     a += 1;
                     Model.Test t = new Model.Test { ID_Person = p.ID , ID_Question = answ.ID_question, ID_Answer = answ.ID};
-                    q.AddQuestion(t);
+                    q.AddQuestionAboutPerson(t);
                 }
                 else
                     MessageBox.Show("Вы уже выбрали 10 вопросов");

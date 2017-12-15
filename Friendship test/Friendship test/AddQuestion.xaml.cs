@@ -21,6 +21,9 @@ namespace Friendship_test
     public partial class AddQuestion : Window
     {
         FriendTestEntities db = new FriendTestEntities();
+        DBUsage q = new DBUsage();
+        Question question = new Question();
+        Answer answer = new Answer();
         public AddQuestion()
         {
             InitializeComponent();
@@ -55,7 +58,26 @@ namespace Friendship_test
 
         private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
+            Model.Question question = new Model.Question { Text = textBoxQuestion.Text };
+            q.AddQuestionToDB(question);
+            int id = -1;
 
+            foreach (var item in db.Question.ToList())
+            {
+                if (item.Text == textBoxQuestion.Text)
+                {
+                    id = item.ID;
+                    break;
+                }
+            }
+
+            if (id != -1)
+            {
+                foreach (var item in listBoxAnswers.Items)
+                {
+                    Model.Answer answer = new Model.Answer { ID_question = id, Text = listBoxAnswers.Items.ToString() };
+                }
+            }
         }
     }
 }

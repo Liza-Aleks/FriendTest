@@ -79,7 +79,7 @@ namespace Friendship_test
                 string temp = userfriend.FirstName + " " + userfriend.LastName; 
                 Person friend = db.Person.ToList().Find(x => x.Name == temp);
            
-                label.Name = friend.Name;
+                labelName.Name = friend.Name;
                 listBoxTop.ItemsSource = db.Result.ToList();
             }
         }
