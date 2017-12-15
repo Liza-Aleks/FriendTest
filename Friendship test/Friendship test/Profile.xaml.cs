@@ -81,6 +81,8 @@ namespace Friendship_test
                 image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
                 labelName.Content = tempname;
                 listBoxTop.ItemsSource = db.Result.ToList();
+                buttonBackToPage.Visibility = Visibility.Visible;
+                buttonTakeTest.Visibility = Visibility.Visible;
             }
         }
 
@@ -93,6 +95,23 @@ namespace Friendship_test
             var user = await VKParser.GetUserInfo(p.Vk);
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
             
+        }
+
+        private async void buttonBackToPage_Click(object sender, RoutedEventArgs e)
+        {
+            labelName.Content = p.Name;
+            var user = await VKParser.GetUserInfo(p.Vk);
+            image.Source = new BitmapImage(new Uri(user.PhotoUrl));
+
+            Model.Test tryy = new Model.Test();
+            tryy = db.Test.ToList().Find(x => x.ID_Person == p.ID);
+            if (db.Test.ToList().Contains(tryy))
+                buttonCreateTest.Visibility = Visibility.Hidden;
+            else
+                buttonCreateTest.Visibility = Visibility.Visible;
+
+            buttonBackToPage.Visibility = Visibility.Hidden;
+            buttonTakeTest.Visibility = Visibility.Hidden;
         }
     }
 }
