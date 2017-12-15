@@ -82,7 +82,10 @@ namespace Friendship_test
 
                 labelName.Content = tempname;
                 if (userfriend.Status == "")
+                {
                     labelS.Visibility = Visibility.Hidden;
+                    labelStatus.Content = "";
+                }
                 else
                 {
                     labelS.Visibility = Visibility.Visible;
@@ -108,7 +111,10 @@ namespace Friendship_test
             listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
             var user = await VKParser.GetUserInfo(p.Vk);
             if (user.Status == "")
+            {
                 labelS.Visibility = Visibility.Hidden;
+                labelStatus.Content = "";
+            }
             else
             {
                 labelS.Visibility = Visibility.Visible;
@@ -132,7 +138,10 @@ namespace Friendship_test
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
 
             if (user.Status == "")
+            {
                 labelS.Visibility = Visibility.Hidden;
+                labelStatus.Content = "";
+            }
             else
             {
                 labelS.Visibility = Visibility.Visible;
