@@ -41,8 +41,8 @@
         <Label x:Name="labelN" Content="Имя:" FontSize="30" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="labelName" FontSize="28" Grid.Column="2" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Label x:Name="labelS" Content="Статус:" FontSize="30" Grid.Column="1" Grid.Row="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelStatus" FontSize="20" FontStyle="Italic" Grid.Column="2" Margin="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelOnline" FontSize="28" Grid.Column="3" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelStatus" FontSize="28" Grid.Column="2" Margin="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelOnline" FontSize="20" FontStyle="Italic" Grid.Column="3" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Button x:Name="buttonGoTo" IsEnabled="False" FontSize="24" Content="Перейти" Margin="20,20.333,20,20" Grid.Row="4" Click="buttonGoTo_Click"/>
         <Button x:Name="buttonOut" FontSize="24" Content="Выйти" Grid.Column="1" Margin="10,20.333,10.333,20" Grid.Row="4" Click="buttonBack_Click"/>
         <Button x:Name="buttonCreateTest" Visibility="Hidden" FontSize="24" Content="Создать тест" Grid.Column="2" Margin="19.667,20.333,20,20" Grid.Row="4" Click="buttonCreateTest_Click" Grid.ColumnSpan="2"/>

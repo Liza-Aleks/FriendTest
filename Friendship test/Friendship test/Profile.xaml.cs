@@ -76,10 +76,24 @@ namespace Friendship_test
             if (listBoxAllFriends.SelectedItem != null)
             {
                 User userfriend = (User)listBoxAllFriends.SelectedItem;
-               // Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.Id);
+                // Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.Id);
                 string tempname = userfriend.FirstName + " " + userfriend.LastName;
                 image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
+
                 labelName.Content = tempname;
+                if (userfriend.Status == "")
+                    labelS.Visibility = Visibility.Hidden;
+                else
+                {
+                    labelS.Visibility = Visibility.Visible;
+                    labelStatus.Content = userfriend.Status;
+                }
+
+                if (userfriend.Online == 1)
+                    labelOnline.Content = "Онлайн";
+                else
+                    labelOnline.Content = "";
+
                 listBoxTop.ItemsSource = db.Result.ToList();
                 buttonBackToPage.Visibility = Visibility.Visible;
                 buttonTakeTest.Visibility = Visibility.Visible;
@@ -93,6 +107,20 @@ namespace Friendship_test
             listBoxAllFriends.Items.Clear();
             listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
             var user = await VKParser.GetUserInfo(p.Vk);
+            if (user.Status == "")
+                labelS.Visibility = Visibility.Hidden;
+            else
+            {
+                labelS.Visibility = Visibility.Visible;
+                labelStatus.Content = user.Status;
+            }
+
+            if (user.Online == 1)
+            labelOnline.Content = "Онлайн";
+            else
+              labelOnline.Content = "";
+
+
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
             
         }
@@ -102,6 +130,19 @@ namespace Friendship_test
             labelName.Content = p.Name;
             var user = await VKParser.GetUserInfo(p.Vk);
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
+
+            if (user.Status == "")
+                labelS.Visibility = Visibility.Hidden;
+            else
+            {
+                labelS.Visibility = Visibility.Visible;
+                labelStatus.Content = user.Status;
+            }
+
+            if (user.Online == 1)
+                labelOnline.Content = "Онлайн";
+            else
+                labelOnline.Content = "";
 
             Model.Test tryy = new Model.Test();
             tryy = db.Test.ToList().Find(x => x.ID_Person == p.ID);
