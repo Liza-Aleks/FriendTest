@@ -20,7 +20,7 @@ namespace ClassesLibrary
 
         private string GetFriendsUrl(int id, int count)
         {
-            return $"{GetUrl("friends.get")}?user_id={id}&count={count}&fields=nickname,photo_100";
+            return $"{GetUrl("friends.get")}?user_id={id}&count={count}&fields=photo_100,status,online,screen_namw";
         }
         private string GetInfoUrl(string screenName) => _apiUrl + $"users.get?user_ids={screenName}&fields=photo_100,status,online,screen_name";
         public async Task<User> GetUser(string screenName)
