@@ -20,5 +20,13 @@ namespace ClassesLibrary.Classes
 
         [JsonProperty("photo_100")]
         public string PhotoUrl { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("online")]
+        public string Online { get; set; }
+
+
     }
 }

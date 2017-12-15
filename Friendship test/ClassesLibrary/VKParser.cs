@@ -22,7 +22,7 @@ namespace ClassesLibrary
         {
             return $"{GetUrl("friends.get")}?user_id={id}&count={count}&fields=nickname,photo_100";
         }
-        private string GetInfoUrl(string screenName) => _apiUrl + $"users.get?user_ids={screenName}&fields=photo_100";
+        private string GetInfoUrl(string screenName) => _apiUrl + $"users.get?user_ids={screenName}&fields=photo_100,status,online";
         public async Task<User> GetUser(string screenName)
         {
             using (var client = new HttpClient())
