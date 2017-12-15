@@ -50,5 +50,16 @@ namespace Model
             db.SaveChanges();
         }
 
+        public void DeleteQuestionFromDB(Question q)
+        {
+            db.Question.Remove(q);
+            db.SaveChanges();
+        }
+
+        public void DeleteAnswerFromDB(Answer a)
+        {
+            db.Answer.Remove(a);
+            db.SaveChanges();
+        }
     }
 }
