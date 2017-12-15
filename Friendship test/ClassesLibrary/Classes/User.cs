@@ -27,6 +27,7 @@ namespace ClassesLibrary.Classes
         [JsonProperty("online")]
         public int Online { get; set; }
 
-
+        [JsonProperty("screen_name")]
+        public string ScreenName { get; set; }
     }
 }

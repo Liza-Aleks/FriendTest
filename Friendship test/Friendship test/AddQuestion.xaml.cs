@@ -32,15 +32,29 @@ namespace Friendship_test
 
         private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxQuestion.Text.Length<10)
+            int f = 0;
+            foreach (var item in db.Question.ToList())
             {
-                MessageBox.Show("Введите нормальный вопрос!");
+                if (item.Text == textBoxQuestion.Text)
+                {
+                    f = 1;
+                    MessageBox.Show("Данный вопрос уже есть в системе!");
+                    textBoxQuestion.Clear();
+                    break;
+                }
             }
-            else
+            if (f == 0)
             {
-                buttonAddQuestion.IsEnabled = false;
-                buttonAddAnswer.IsEnabled = true;
-                textBoxQuestion.IsEnabled = false;
+                if (textBoxQuestion.Text.Length < 10)
+                {
+                    MessageBox.Show("Введите нормальный вопрос!");
+                }
+                else
+                {
+                    buttonAddQuestion.IsEnabled = false;
+                    buttonAddAnswer.IsEnabled = true;
+                    textBoxQuestion.IsEnabled = false;
+                }
             }
         }
 
@@ -75,9 +89,25 @@ namespace Friendship_test
             {
                 foreach (var item in listBoxAnswers.Items)
                 {
-                    Model.Answer answer = new Model.Answer { ID_question = id, Text = listBoxAnswers.Items.ToString() };
+                    Model.Answer answer = new Model.Answer { ID_question = id, Text = item.ToString() };
+                    q.AddAnswerToDB(answer);
                 }
             }
+
+            textBoxQuestion.Clear();
+            textBoxAnswer.Clear();
+            textBoxQuestion.IsEnabled = true;
+            textBoxAnswer.IsEnabled = false;
+            buttonAddQuestion.IsEnabled = true;
+            buttonAddAnswer.IsEnabled = false;
+            buttonEnd.IsEnabled = false;
+            listBoxAnswers.Items.Clear();
+            listBoxQuestions.ItemsSource = db.Question.ToList();
+        }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
