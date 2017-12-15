@@ -76,10 +76,10 @@ namespace Friendship_test
             if (listBoxAllFriends.SelectedItem != null)
             {
                 User userfriend = (User)listBoxAllFriends.SelectedItem;
-                string temp = userfriend.FirstName + " " + userfriend.LastName; 
-                Person friend = db.Person.ToList().Find(x => x.Name == temp);
-           
-                label.Name = friend.Name;
+               // Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.Id);
+                string tempname = userfriend.FirstName + " " + userfriend.LastName;
+                image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
+                labelName.Content = tempname;
                 listBoxTop.ItemsSource = db.Result.ToList();
             }
         }
@@ -91,7 +91,6 @@ namespace Friendship_test
             listBoxAllFriends.Items.Clear();
             listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
             var user = await VKParser.GetUserInfo(p.Vk);
-         
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
             
         }
