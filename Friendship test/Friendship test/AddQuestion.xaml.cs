@@ -61,7 +61,9 @@ namespace Friendship_test
 
         private void buttonAddAnswer_Click(object sender, RoutedEventArgs e)
         {
-            listBoxAnswers.Items.Add(textBoxAnswer.Text);
+            string answer;
+            answer = textBoxAnswer.Text;
+            listBoxAnswers.Items.Add(answer);
             textBoxAnswer.Clear();
             if (listBoxAnswers.Items.Count>=2)
             {
@@ -71,14 +73,13 @@ namespace Friendship_test
 
         private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
-            Question question = new Question { Text = textBoxQuestion.Text };
+           Question question = new Question { Text = textBoxQuestion.Text };
             q.AddQuestion(question);
-
             int id = li.CheckQuestion(textBoxQuestion.Text);
-
+             
                 foreach (var item in listBoxAnswers.Items)
                 {
-                   Answer answer = new Answer { ID_question = id, Text = item.ToString() };
+                    Answer answer = new Answer { ID_question = question.ID, Text = item.ToString() };
                     q.AddAnswer(answer);
                 }
             
@@ -93,9 +94,8 @@ namespace Friendship_test
             listBoxAnswers.Items.Clear();
             listBoxQuestions.ItemsSource = db.Question.ToList();
         }
-        
 
-        private void buttoDelete_Click(object sender, RoutedEventArgs e)
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
             Question que = (Question)listBoxQuestions.SelectedItem;
             if (listBoxQuestions.SelectedItem != null)
@@ -107,7 +107,7 @@ namespace Friendship_test
                     listBoxQuestions.ItemsSource = db.Question.ToList();
                 }
                 else
-                    MessageBox.Show("Вы не можете удалить этот вопрос, так как он используется");
+                    MessageBox.Show("Вы не можете удалить этот вопрос");
             }
             else
                 MessageBox.Show("Выберите вопрос");

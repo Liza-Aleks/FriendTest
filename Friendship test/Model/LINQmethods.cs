@@ -28,8 +28,7 @@ namespace Model
             var listanswers = (from a in db.Answer.ToList()
                                where a.ID_question == idquestion
                                select a).ToList();
-
-
+            
             return listanswers;
         }
         

@@ -57,6 +57,7 @@ namespace Model
             foreach (var item in answers)
             {
                 db.Answer.Remove(item);
+                db.SaveChanges();
             }
             db.Question.Remove(que);
             db.SaveChanges();
