@@ -1,0 +1,36 @@
+﻿<Window x:Class="Friendship_test.AddQuestion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Friendship_test"
+        mc:Ignorable="d"
+        Title="AddQuestion" Height="350" Width="550" ResizeMode="NoResize">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<ListBox x:Name="listBoxQuestions" DisplayMemberPath="Text" FontSize="10" Margin="10" Grid.Row="1" Grid.RowSpan="4"/>
+		<ListBox x:Name="listBoxAnswers" FontSize="14" Grid.Column="2" Margin="10" Grid.Row="1" Grid.RowSpan="4"/>
+		<Label x:Name="label" FontSize="18" Content="Вопросы в системе:" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label x:Name="label1" FontSize="18" Content="Новый вопрос:" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label x:Name="label2" FontSize="18" Content="Ответы:" Grid.Column="2" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label x:Name="label3" FontSize="18" Content="Новый ответ:" Grid.Column="1" Grid.Row="3" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<TextBox x:Name="textBoxQuestion" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+		<TextBox x:Name="textBoxAnswer" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
+		<Button x:Name="buttonAddQuestion" FontSize="18" Content="Добавить вопрос" Grid.Column="1" Margin="10" Grid.Row="2" Click="buttonAddQuestion_Click"/>
+		<Button x:Name="buttonDelete" FontSize="18" Content="Удалить вопрос" Grid.Column="0" Margin="10" Grid.Row="5" Click="buttonDelete_Click"/>
+		<Button x:Name="buttonAddAnswer" IsEnabled="False" FontSize="18" Content="Добавить ответ" Grid.Column="1" Margin="10" Grid.Row="5" Click="buttonAddAnswer_Click"/>
+		<Button x:Name="buttonEnd" IsEnabled="False" FontSize="18" Content="Завершить" Margin="10" Grid.Column="2" Grid.Row="5" Click="buttonEnd_Click"/>
+	</Grid>
+</Window>
