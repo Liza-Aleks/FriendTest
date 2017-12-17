@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassesLibrary.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,25 @@ namespace Model
             
             return listanswers;
         }
-        
 
+        public List<Result> FindResult(User user)
+        {
+            Person friend = db.Person.ToList().Find(x => x.Vk == user.ScreenName);
+            var results = (from a in db.Result.ToList()
+                           where a.ID_PersonQuestioner == friend.ID
+                           select a).ToList();
+
+            return results;
+        }
+
+
+         public List<Test> FindQuestionAboutPerson(Person personq)
+        {
+            var questionsinTest = (from a in db.Test.ToList()
+                                   where a.ID_Person == personq.ID
+                                   select a).ToList();
+            
+            return questionsinTest;
+        }
     }
 }

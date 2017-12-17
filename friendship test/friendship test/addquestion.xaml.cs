@@ -22,6 +22,7 @@ namespace Friendship_test
     {
         FriendTestEntities db = new FriendTestEntities();
         DBUsage q = new DBUsage();
+        LINQmethods li = new LINQmethods();
         Question question = new Question();
         Answer answer = new Answer();
         public AddQuestion()
@@ -32,18 +33,18 @@ namespace Friendship_test
 
         private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
         {
-            int f = 0;
+            bool f = false;
             foreach (var item in db.Question.ToList())
             {
                 if (item.Text == textBoxQuestion.Text)
                 {
-                    f = 1;
+                    f = true;
                     MessageBox.Show("Данный вопрос уже есть в системе!");
                     textBoxQuestion.Clear();
                     break;
                 }
             }
-            if (f == 0)
+            if (f == false)
             {
                 if (textBoxQuestion.Text.Length < 10)
                 {
@@ -72,27 +73,16 @@ namespace Friendship_test
 
         private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
-            Model.Question question = new Model.Question { Text = textBoxQuestion.Text };
-            q.AddQuestionToDB(question);
-            int id = -1;
-
-            foreach (var item in db.Question.ToList())
-            {
-                if (item.Text == textBoxQuestion.Text)
-                {
-                    id = item.ID;
-                    break;
-                }
-            }
-
-            if (id != -1)
-            {
+           Question question = new Question { Text = textBoxQuestion.Text };
+            q.AddQuestion(question);
+            int id = li.CheckQuestion(textBoxQuestion.Text);
+             
                 foreach (var item in listBoxAnswers.Items)
                 {
-                    Model.Answer answer = new Model.Answer { ID_question = id, Text = item.ToString() };
-                    q.AddAnswerToDB(answer);
+                    Answer answer = new Answer { ID_question = question.ID, Text = item.ToString() };
+                    q.AddAnswer(answer);
                 }
-            }
+            
 
             textBoxQuestion.Clear();
             textBoxAnswer.Clear();
@@ -107,7 +97,20 @@ namespace Friendship_test
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            
+            Question que = (Question)listBoxQuestions.SelectedItem;
+            if (listBoxQuestions.SelectedItem != null)
+            {
+                if (db.Test.FirstOrDefault(ee => ee.ID_Question == que.ID) == null)
+                {
+                    listBoxQuestions.SelectedItem = null;
+                    q.DeleteQuestion(que);
+                    listBoxQuestions.ItemsSource = db.Question.ToList();
+                }
+                else
+                    MessageBox.Show("Вы не можете удалить этот вопрос");
+            }
+            else
+                MessageBox.Show("Выберите вопрос");
         }
     }
 }

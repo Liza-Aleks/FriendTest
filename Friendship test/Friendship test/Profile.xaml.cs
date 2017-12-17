@@ -25,6 +25,7 @@ namespace Friendship_test
     {
         Test t;
         DBUsage q = new DBUsage();
+        LINQmethods li = new LINQmethods();
         FriendTestEntities db = new FriendTestEntities();
         List<Person> people = new List<Person>();
         Person p = new Person();
@@ -45,9 +46,7 @@ namespace Friendship_test
              buttonCreateTest.Visibility = Visibility.Hidden;
             else
              buttonCreateTest.Visibility = Visibility.Visible;
-
             
-          
         }
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
@@ -76,7 +75,13 @@ namespace Friendship_test
             if (listBoxAllFriends.SelectedItem != null)
             {
                 User userfriend = (User)listBoxAllFriends.SelectedItem;
-                // Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.Id);
+                List<Result> results = li.FindResult(userfriend);
+                listBoxTop.Items.Clear();
+                if (results.Count() > 0)
+                    listBoxTop.ItemsSource = results;
+                else
+                    listBoxTop.Items.Add("Никто не прошел тест");
+
                 string tempname = userfriend.FirstName + " " + userfriend.LastName;
                 image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
 
@@ -96,8 +101,7 @@ namespace Friendship_test
                     labelOnline.Content = "Онлайн";
                 else
                     labelOnline.Content = "";
-
-                listBoxTop.ItemsSource = db.Result.ToList();
+                
                 buttonBackToPage.Visibility = Visibility.Visible;
                 buttonTakeTest.Visibility = Visibility.Visible;
             }
@@ -126,6 +130,12 @@ namespace Friendship_test
             else
               labelOnline.Content = "";
 
+            List<Result> results = li.FindResult(user);
+            listBoxTop.Items.Clear();
+            if (results.Count() > 0)
+                listBoxTop.ItemsSource = results;
+            else
+                listBoxTop.Items.Add("Никто не прошел тест");
 
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
             
@@ -153,6 +163,10 @@ namespace Friendship_test
             else
                 labelOnline.Content = "";
 
+            List<Result> results = li.FindResult(user);
+            listBoxTop.Items.Clear();
+            listBoxTop.ItemsSource = results;
+
             Model.Test tryy = new Model.Test();
             tryy = db.Test.ToList().Find(x => x.ID_Person == p.ID);
             if (db.Test.ToList().Contains(tryy))
@@ -162,6 +176,14 @@ namespace Friendship_test
 
             buttonBackToPage.Visibility = Visibility.Hidden;
             buttonTakeTest.Visibility = Visibility.Hidden;
+        }
+
+        private void buttonTakeTest_Click(object sender, RoutedEventArgs e)
+        {
+            User userfriend = (User)listBoxAllFriends.SelectedItem;
+            Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.ScreenName);
+            t.Main.Content = new TakeTest(t,p,friend);
+
         }
     }
 }

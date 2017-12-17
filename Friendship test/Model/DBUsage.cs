@@ -54,13 +54,14 @@ namespace Model
         public void DeleteQuestion(Question que)
         {
             List<Answer> answers =  li.FindAnswers(que.ID);
-            foreach (var item in answers)
+            foreach (Answer item in answers)
             {
                 db.Answer.Remove(item);
-                db.SaveChanges();
             }
+            
             db.Question.Remove(que);
             db.SaveChanges();
         }
+
     }
 }
