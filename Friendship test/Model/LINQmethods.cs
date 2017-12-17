@@ -23,6 +23,20 @@ namespace Model
             return id;
 
         }
+        public static bool CheckIfTestPassed(int idPerson, int idCreator)
+        {
+            using (var db = new FriendTestEntities())
+            {
+                return db.Result.Any(r => r.ID_PersonQuestioner == idCreator && r.ID_PersonRespondent == idPerson);
+            }
+        }
+        public static bool CheckIfTestCreated(int idPerson)
+        {
+            using (var db = new FriendTestEntities())
+            {
+                return db.Test.Any(t => t.ID_Person == idPerson);
+            }
+        }
         public static void RemoveQuestion(Question que)
         {
             using (var db = new FriendTestEntities())

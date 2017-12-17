@@ -77,6 +77,8 @@ namespace Friendship_test
 
         private void buttonGoTo_Click(object sender, RoutedEventArgs e)
         {
+            buttonTakeTest.IsEnabled = true;
+
             if (listBoxAllFriends.SelectedItem != null)
             {
                 User userfriend = (User)listBoxAllFriends.SelectedItem;
@@ -88,8 +90,6 @@ namespace Friendship_test
                 if (results.Count() > 0)
                     listBoxTop.ItemsSource = results;
                 
-
-
                 string tempname = userfriend.FirstName + " " + userfriend.LastName;
                 image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
 
@@ -115,18 +115,10 @@ namespace Friendship_test
                 }
 
                 Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.ScreenName);
-                Result friendresult = db.Result.ToList().Find(x => x.ID_PersonQuestioner == friend.ID && x.ID_PersonRespondent == p.ID);
-                if (db.Result.ToList().Contains(friendresult))
+                if (LINQmethods.CheckIfTestPassed(p.ID, friend.ID) || !LINQmethods.CheckIfTestCreated(friend.ID))
                 {
                     buttonTakeTest.IsEnabled = false;
                 }
-                else
-                    buttonTakeTest.IsEnabled = true;
-                Model.Test friendtest = db.Test.ToList().Find(x => x.ID_Person == friend.ID);
-                if (db.Test.ToList().Contains(friendtest))
-                    buttonTakeTest.Visibility = Visibility.Visible;
-                else
-                   buttonTakeTest.Visibility = Visibility.Hidden;
 
                 buttonBackToPage.Visibility = Visibility.Visible;
                 buttonTakeTest.Visibility = Visibility.Visible;
