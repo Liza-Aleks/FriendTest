@@ -23,7 +23,29 @@ namespace Model
             return id;
 
         }
-
+        public static void RemoveQuestion(Question que)
+        {
+            using (var db = new FriendTestEntities())
+            {
+                int id = que.ID;
+                var answers = from ans in db.Answer
+                              where ans.ID_question == id
+                              select ans;
+                foreach (Answer item in answers)
+                {
+                    db.Answer.Remove(item);
+                }
+                db.SaveChanges();
+                var quest = from q in db.Question
+                            where q.ID == id
+                            select q;
+                foreach (Question q in quest)
+                {
+                    db.Question.Remove(q);
+                }
+                db.SaveChanges();
+            }
+        }
         public List<Answer> FindAnswers(int idquestion)
         {
             var listanswers = (from a in db.Answer.ToList()

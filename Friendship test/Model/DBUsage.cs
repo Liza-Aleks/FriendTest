@@ -59,14 +59,7 @@ namespace Model
 
         public void DeleteQuestion(Question que)
         {
-            List<Answer> answers =  li.FindAnswers(que.ID);
-            foreach (Answer item in answers)
-            {
-                db.Answer.Remove(item);
-            }
-            
-            db.Question.Remove(que);
-            db.SaveChanges();
+            LINQmethods.RemoveQuestion(que);
         }
 
        
