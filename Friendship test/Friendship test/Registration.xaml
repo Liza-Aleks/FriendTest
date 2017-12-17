@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Friendship_test"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="450"
+	  Background="Bisque"
       Title="Registration">
 
 	<Grid>
@@ -35,8 +36,8 @@
 		<PasswordBox x:Name="passwordBoxSecond" FontSize="21" Grid.Column="1" Margin="20, 10, 40, 10" Grid.Row="3" KeyDown="passwordBoxSecond_KeyDown"/>
 		<TextBox x:Name="textBoxVK" FontSize="21" Grid.Column="1" Margin="20, 10, 40, 10" Grid.Row="4" Text="" KeyDown="textBoxVK_KeyDown"/>
 		<PasswordBox IsEnabled="False" x:Name="passwordBoxAdmin" FontSize="21" Grid.Column="1" Margin="20, 10, 65, 10" Grid.Row="5"/>
-		<Button x:Name="buttonBack" Content="Назад" FontSize="19" Margin="40, 10, 20, 10" Grid.Row="6" HorizontalContentAlignment="Center" Click="buttonBack_Click"/>
-		<Button x:Name="buttonOK" Content="Готово!" FontSize="19" Margin="20, 10, 40, 10" Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Center" Click="buttonOK_Click"/>
-		<Button x:Name="buttonAdmin" IsEnabled="False" Content="Ок" Grid.Column="1" Margin="150, 10, 40, 10" Grid.Row="5" Click="buttonAdmin_Click"/>
+		<Button x:Name="buttonBack" Background="LightSalmon" Content="Назад" FontSize="19" Margin="40, 10, 20, 10" Grid.Row="6" HorizontalContentAlignment="Center" Click="buttonBack_Click"/>
+		<Button x:Name="buttonOK" Background="LightSalmon" Content="Готово!" FontSize="19" Margin="20, 10, 40, 10" Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Center" Click="buttonOK_Click"/>
+		<Button x:Name="buttonAdmin" Background="LightSalmon" IsEnabled="False" Content="Ок" Grid.Column="1" Margin="150, 10, 40, 10" Grid.Row="5" Click="buttonAdmin_Click"/>
 	</Grid>
 </Page>
