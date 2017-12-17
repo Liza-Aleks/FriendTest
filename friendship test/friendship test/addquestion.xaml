@@ -29,7 +29,7 @@
 		<TextBox x:Name="textBoxQuestion" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
 		<TextBox x:Name="textBoxAnswer" FontSize="12" Grid.Column="1" Margin="10" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center"/>
 		<Button x:Name="buttonAddQuestion" FontSize="18" Content="Добавить вопрос" Grid.Column="1" Margin="10" Grid.Row="2" Click="buttonAddQuestion_Click"/>
-        <Button x:Name="buttonDelete" FontSize="18" Content="Удалить вопрос" Grid.Column="0" Margin="10" Grid.Row="5" Click=" buttonDelete_Click"/>
+		<Button x:Name="buttonDelete" FontSize="18" Content="Удалить вопрос" Grid.Column="0" Margin="10" Grid.Row="5" Click="buttonDelete_Click"/>
 		<Button x:Name="buttonAddAnswer" IsEnabled="False" FontSize="18" Content="Добавить ответ" Grid.Column="1" Margin="10" Grid.Row="5" Click="buttonAddAnswer_Click"/>
 		<Button x:Name="buttonEnd" IsEnabled="False" FontSize="18" Content="Сохранить" Margin="10" Grid.Column="2" Grid.Row="5" Click="buttonEnd_Click"/>
 	</Grid>
