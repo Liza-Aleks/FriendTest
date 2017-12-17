@@ -9,6 +9,7 @@ namespace Model
      public class DBUsage
     {
         FriendTestEntities db = new FriendTestEntities();
+        LINQmethods li = new LINQmethods();
 
         public List<Person> ShowPerson()
         {
@@ -38,28 +39,29 @@ namespace Model
             db.SaveChanges();
         }
 
-        public void AddQuestionToDB(Question q)
+        public void AddQuestion(Question q)
         {
             db.Question.Add(q);
             db.SaveChanges();
         }
 
-        public void AddAnswerToDB(Answer a)
+        public void AddAnswer(Answer a)
         {
             db.Answer.Add(a);
             db.SaveChanges();
         }
 
-        public void DeleteQuestionFromDB(Question q)
+        public void DeleteQuestion(Question que)
         {
-            db.Question.Remove(q);
+            List<Answer> answers =  li.FindAnswers(que.ID);
+            foreach (Answer item in answers)
+            {
+                db.Answer.Remove(item);
+            }
+            
+            db.Question.Remove(que);
             db.SaveChanges();
         }
 
-        public void DeleteAnswerFromDB(Answer a)
-        {
-            db.Answer.Remove(a);
-            db.SaveChanges();
-        }
     }
 }

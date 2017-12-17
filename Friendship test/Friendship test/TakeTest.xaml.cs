@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace Friendship_test
     /// </summary>
     public partial class TakeTest : Page
     {
-        public TakeTest()
+        Test t;
+        Person p;
+        Person friend;
+
+
+        public TakeTest(Test test, Person person, Person friendperson)
         {
+            t = test;
+            p = person;
+            friend = friendperson;
             InitializeComponent();
+
+
+
         }
     }
 }
