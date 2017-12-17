@@ -27,7 +27,7 @@ namespace Friendship_test
         DBUsage q = new DBUsage();
         LINQmethods li = new LINQmethods();
         int temp = 1;
-
+        int points = 0;
 
 
         public TakeTest(Test test, Person person, Person friendperson)
@@ -52,21 +52,67 @@ namespace Friendship_test
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
+            if (listBoxAnswers.SelectedItem != null)
+            {
+                var questionsinTest = li.FindQuestioninTest(p);
+                var questions = li.FindQuestion(questionsinTest);
+
+                Answer friendanswer = (Answer)listBoxAnswers.SelectedItem;
+                Model.Test correct = questionsinTest.Find(x => x.ID_Question == friendanswer.ID_question);
+                string correctanswer = "Правильный ответ: " + correct.Answer.Text;
+                if (friendanswer.ID == correct.ID_Answer)
+                {
+                    MessageBox.Show("Правильно!!!");
+                    points++;
+                }
+                else
+                    MessageBox.Show(correctanswer);
+               
+                var question = questions[temp];
+                List<Answer> answers = li.FindAnswers(question.ID);
+
+                labelQuestion.Content = question.Text;
+                listBoxAnswers.ItemsSource = answers;
+
+                buttonNext.IsEnabled = false;
+
+                if (temp == 2)
+                {
+                    buttonNext.Visibility = Visibility.Hidden;
+                    buttonEnd.Visibility = Visibility.Visible;
+                }
+                temp++;
+            }
+        }
+
+        private void buttonEnd_Click(object sender, RoutedEventArgs e)
+        {
+
             var questionsinTest = li.FindQuestioninTest(p);
             var questions = li.FindQuestion(questionsinTest);
 
-            var question = questions[temp];
-            List<Answer> answers = li.FindAnswers(question.ID);
-
-            labelQuestion.Content = question.Text;
-            listBoxAnswers.ItemsSource = answers;
-
-            if(temp == 9)
+            Answer friendanswer = (Answer)listBoxAnswers.SelectedItem;
+            Model.Test correct = questionsinTest.Find(x => x.ID_Question == friendanswer.ID_question);
+            string correctanswer = "Правильный ответ: " + correct.Answer.Text;
+            if (friendanswer.ID == correct.ID_Answer)
             {
-                buttonNext.Visibility = Visibility.Hidden;
-                buttonEnd.Visibility = Visibility.Visible;
+                MessageBox.Show("Правильно!!!");
+                points++;
             }
-            temp++;
+            else
+                MessageBox.Show(correctanswer);
+
+            Result result = new Result { ID_PersonQuestioner = friend.ID, ID_PersonRespondent = p.ID, Points = points };
+            q.AddResult(result);
+            t.Main.Content = new Profile(p,t);
+
+
+
+        }
+
+        private void listBoxAnswers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            buttonNext.IsEnabled = true;
         }
     }
 }

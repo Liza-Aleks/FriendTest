@@ -51,6 +51,12 @@ namespace Model
             db.SaveChanges();
         }
 
+        public void AddResult(Result res)
+        {
+            db.Result.Add(res);
+            db.SaveChanges();
+        }
+
         public void DeleteQuestion(Question que)
         {
             List<Answer> answers =  li.FindAnswers(que.ID);
@@ -62,6 +68,9 @@ namespace Model
             db.Question.Remove(que);
             db.SaveChanges();
         }
+
+       
+
 
     }
 }
