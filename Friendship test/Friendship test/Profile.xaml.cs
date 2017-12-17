@@ -86,7 +86,7 @@ namespace Friendship_test
 
                 if (listBoxTop.Items.Count > 0)
                     listBoxTop.ItemsSource = (new List<ResultforOutput>());
-                
+
                 if (results.Count() > 0)
                     listBoxTop.ItemsSource = results;
                 
