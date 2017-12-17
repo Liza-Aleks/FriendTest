@@ -44,13 +44,32 @@ namespace Model
         }
 
 
-         public List<Test> FindQuestionAboutPerson(Person personq)
+         public List<Test> FindQuestioninTest(Person personq)
         {
             var questionsinTest = (from a in db.Test.ToList()
                                    where a.ID_Person == personq.ID
+                                   orderby a.ID_Question
                                    select a).ToList();
-            
+          
             return questionsinTest;
+        }
+
+        public List<Question> FindQuestion(List<Test> questionsinTest)
+        {
+            List<Question> qu = new List<Question>();
+            foreach (var item in questionsinTest)
+            {
+                Question question= db.Question.ToList().Find(x => x.ID == item.ID_Question);
+                qu.Add(question);
+            }
+
+            var questions = (from a in qu
+                             orderby a.ID
+                             select a).ToList();
+                        
+
+
+            return questions;
         }
     }
 }

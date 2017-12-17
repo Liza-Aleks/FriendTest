@@ -20,9 +20,9 @@
             <RowDefinition Height="85*"/>
         </Grid.RowDefinitions>
         <Label x:Name="labelQuestion" FontSize="30" Content="" Margin="20,20,20,0" Grid.ColumnSpan="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-        <ListBox x:Name="listBoxAnswers" Grid.ColumnSpan="3" Margin="20,20,20,20" Grid.Row="1"/>
+        <ListBox x:Name="listBoxAnswers" DisplayMemberPath="Text" Grid.ColumnSpan="3" Margin="20,20,20,20" Grid.Row="1"/>
         <Button x:Name="buttonBack" FontSize="24" Content="Назад" Margin="20, 20, 0, 20" Grid.Row="2"/>
-        <Button x:Name="buttonNext" FontSize="24" Content="Следующий вопрос" Grid.Column="2" Margin="0, 20, 20, 20" Grid.Row="2"/>
+        <Button x:Name="buttonNext" FontSize="24" Content="Следующий вопрос" Grid.Column="2" Margin="0, 20, 20, 20" Grid.Row="2" Click="buttonNext_Click"/>
         <Button Visibility="Hidden" x:Name="buttonEnd" FontSize="24" Content="Завершить" Grid.Column="2" Margin="0, 20, 20, 20" Grid.Row="2"/>
     </Grid>
 </Page>

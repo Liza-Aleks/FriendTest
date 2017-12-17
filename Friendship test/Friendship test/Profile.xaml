@@ -40,8 +40,8 @@
         <ListBox x:Name="listBoxTop" FontSize="24" Grid.ColumnSpan="3" Grid.Column="1" Margin="10,0,20,85" Grid.Row="3" Grid.RowSpan="2"/>
         <Label x:Name="labelN" Content="Имя:" FontSize="30" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="labelName" FontSize="28" Grid.Column="2" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelS" Content="Статус:" FontSize="30" Grid.Column="1" Grid.Row="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelStatus" Visibility="Hidden" FontSize="22" Grid.Column="2" Margin="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelS" Content="Статус:" Visibility="Hidden" FontSize="30" Grid.Column="1" Grid.Row="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelStatus" FontSize="22" Grid.Column="2" Margin="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="labelOnline" FontSize="20" FontStyle="Italic" Grid.Column="3" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Button x:Name="buttonGoTo" IsEnabled="False" FontSize="24" Content="Перейти" Margin="20" Grid.Row="4" Click="buttonGoTo_Click"/>
         <Button x:Name="buttonOut" FontSize="24" Content="Выйти" Grid.Column="1" Margin="10,20" Grid.Row="4" Click="buttonBack_Click"/>

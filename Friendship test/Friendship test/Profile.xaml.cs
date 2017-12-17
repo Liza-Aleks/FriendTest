@@ -101,7 +101,8 @@ namespace Friendship_test
                     labelOnline.Content = "Онлайн";
                 else
                     labelOnline.Content = "";
-                
+
+                buttonCreateTest.Visibility = Visibility.Hidden;
                 buttonBackToPage.Visibility = Visibility.Visible;
                 buttonTakeTest.Visibility = Visibility.Visible;
             }
