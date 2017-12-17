@@ -124,7 +124,22 @@ namespace Friendship_test
         {
 
             listBoxAllFriends.Items.Clear();
-            listBoxAllFriends.ItemsSource = await VKParser.GetFriends(p.Vk, count:5000);
+            var friends = await VKParser.GetFriends(p.Vk, count:5000);
+            List<User> friendsInSystem = new List<User>();
+            foreach (var item in friends)
+            {
+                if (db.Person.ToList().Find(x => x.Vk == item.ScreenName) != null)
+                {
+                    friendsInSystem.Add(item);
+                }
+            }
+            if (friendsInSystem.Count() > 0)
+            {
+                listBoxAllFriends.ItemsSource = friendsInSystem;
+            }
+            else
+                listBoxAllFriends.Items.Add("Нет друзей в системе");
+           
             var user = await VKParser.GetUserInfo(p.Vk);
             if (user.Status == "")
             {

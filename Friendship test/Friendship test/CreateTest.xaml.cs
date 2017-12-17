@@ -75,6 +75,7 @@ namespace Friendship_test
 
         private void buttonChoose_Click(object sender, RoutedEventArgs e)
         {
+            buttonChoose.IsEnabled = false;
             if (listBoxAnswers.SelectedItem != null && listBoxQuestions.SelectedItem != null)
             {
                 if (a != 10)
