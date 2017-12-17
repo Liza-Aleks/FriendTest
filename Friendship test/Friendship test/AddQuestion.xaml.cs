@@ -55,6 +55,7 @@ namespace Friendship_test
                     buttonAddQuestion.IsEnabled = false;
                     buttonAddAnswer.IsEnabled = true;
                     textBoxQuestion.IsEnabled = false;
+                    textBoxAnswer.IsEnabled = true;
                 }
             }
         }

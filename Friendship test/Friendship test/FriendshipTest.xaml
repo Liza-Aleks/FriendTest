@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Friendship_test"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="450"
+	  Background="PowderBlue"
       Title="FriendshipTest">
 
     <Grid>
@@ -25,7 +26,7 @@
         </Grid.ColumnDefinitions>
 
         <Label  x:Name="label" Content="Test your friendship!" FontSize="40" Grid.RowSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="20, 0" Grid.Row="2" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonSignIN" Content="Вход" FontSize="19" Margin="40, 10, 20, 10" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSignIN_Click"/>
-        <Button  x:Name="buttonRegistration" Content="Регистрация" FontSize="19" Margin="20, 10, 40, 10" Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonRegistration_Click"/>
+		<Button x:Name="buttonSignIN" Background="LightSeaGreen" Content="Вход" FontSize="19" Margin="40, 10, 20, 10" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSignIN_Click"/>
+		<Button  x:Name="buttonRegistration" Background="LightSeaGreen" Content="Регистрация" FontSize="19" Margin="20, 10, 40, 10" Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonRegistration_Click"/>
     </Grid>
 </Page>
