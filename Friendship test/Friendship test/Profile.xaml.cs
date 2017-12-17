@@ -41,11 +41,13 @@ namespace Friendship_test
             people = q.ShowPerson();
             labelName.Content = p.Name;
             Model.Test tryy = new Model.Test();
-            tryy = db.Test.ToList().Find(x => x.ID_Person==p.ID);
+           
             if (p.Test == 1)
             {
                 buttonAddQuestion.Visibility = Visibility.Visible;
             }
+
+            tryy = db.Test.ToList().Find(x => x.ID_Person == p.ID);
             if (db.Test.ToList().Contains(tryy))
              buttonCreateTest.Visibility = Visibility.Hidden;
             else
@@ -79,6 +81,10 @@ namespace Friendship_test
             {
                 User userfriend = (User)listBoxAllFriends.SelectedItem;
                 var results = m.ShowTop(userfriend);
+
+                if (listBoxTop.Items.Count > 0)
+                    listBoxTop.ItemsSource = (new List<ResultforOutput>());
+                
                 if (results.Count() > 0)
                     listBoxTop.ItemsSource = results;
                 
@@ -108,6 +114,20 @@ namespace Friendship_test
                     labelOnline.Content = "Оффлайн";
                 }
 
+                Person friend = db.Person.ToList().Find(x => x.Vk == userfriend.ScreenName);
+                Result friendresult = db.Result.ToList().Find(x => x.ID_PersonQuestioner == friend.ID && x.ID_PersonRespondent == p.ID);
+                if (db.Result.ToList().Contains(friendresult))
+                {
+                    buttonTakeTest.IsEnabled = false;
+                }
+                else
+                    buttonTakeTest.IsEnabled = true;
+                Model.Test friendtest = db.Test.ToList().Find(x => x.ID_Person == friend.ID);
+                if (db.Test.ToList().Contains(friendtest))
+                    buttonTakeTest.Visibility = Visibility.Visible;
+                else
+                   buttonTakeTest.Visibility = Visibility.Hidden;
+
                 buttonBackToPage.Visibility = Visibility.Visible;
                 buttonTakeTest.Visibility = Visibility.Visible;
                 buttonCreateTest.Visibility = Visibility.Hidden;
@@ -118,8 +138,9 @@ namespace Friendship_test
      
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            if (listBoxTop.Items.Count > 0)
+                listBoxTop.ItemsSource = (new List<ResultforOutput>());
 
-            listBoxAllFriends.Items.Clear();
             var friends = await VKParser.GetFriends(p.Vk, count:5000);
             List<User> friendsInSystem = new List<User>();
             foreach (var item in friends)
@@ -129,12 +150,14 @@ namespace Friendship_test
                     friendsInSystem.Add(item);
                 }
             }
+            if (listBoxAllFriends.Items.Count > 0)
+                listBoxAllFriends.Items.Clear();
+
             if (friendsInSystem.Count() > 0)
-            {
-                listBoxAllFriends.ItemsSource = friendsInSystem;
-            }
+             listBoxAllFriends.ItemsSource = friendsInSystem;
+            
             else
-                listBoxAllFriends.Items.Add("Нет друзей в системе");
+           listBoxAllFriends.ItemsSource = (new List<User>());
            
             var user = await VKParser.GetUserInfo(p.Vk);
             if (user.Status == "")
@@ -185,7 +208,10 @@ namespace Friendship_test
                 labelOnline.Content = "";
 
             List<Result> results = li.FindResult(user);
-            listBoxTop.Items.Clear();
+
+            if (listBoxTop.Items.Count > 0)
+                listBoxTop.ItemsSource = (new List<ResultforOutput>());
+
             listBoxTop.ItemsSource = results;
 
             Model.Test tryy = new Model.Test();
