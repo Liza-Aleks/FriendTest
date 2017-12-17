@@ -10,13 +10,14 @@
       Title="SignIN">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="0.5*"/>
 			<RowDefinition Height="2*"/>
 			<RowDefinition Height="2*"/>
 			<RowDefinition Height="2*"/>
 			<RowDefinition Height="2*"/>
 			<RowDefinition Height="2*"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="0.5*"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
@@ -27,8 +28,8 @@
 		<Label x:Name="label2" Content="Пароль:" FontSize="21" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0" Grid.Row="3"/>
 		<TextBox x:Name="textBoxLogin" FontSize="21" Grid.Column="1" Margin="20,10,40,10" Grid.Row="2" Text="" KeyDown="textBoxLogin_KeyDown"/>
 		<PasswordBox  x:Name="passwordBox" FontSize="21" Grid.Column="1" Margin="20,10,40,10" Grid.Row="3" KeyDown="passwordBox_KeyDown"/>
-		<Button  x:Name="buttonBack" Background="LightCoral" Content="Назад&#xD;&#xA;" FontSize="20" Margin="40,10,20,10" Grid.Row="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonBack_Click"/>
-		<Button x:Name="buttonSignIN" Background="LightCoral" Content="Войти" FontSize="20" Margin="20,10,40,10" Grid.Row="5" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSignIN_Click"/>
+		<Button  x:Name="buttonBack" Background="LightCoral" Content="Назад&#xD;&#xA;" FontSize="19" Margin="40,10,20,10" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonBack_Click"/>
+		<Button x:Name="buttonSignIN" Background="LightCoral" Content="Войти" FontSize="19" Margin="20,10,40,10" Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="buttonSignIN_Click"/>
 
 	</Grid>
 </Page>

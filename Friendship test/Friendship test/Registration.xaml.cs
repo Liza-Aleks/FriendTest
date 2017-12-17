@@ -26,6 +26,7 @@ namespace Friendship_test
         List<Person> people = new List<Person>();
         MainWindow wnd;
         VKParser VKParser = new VKParser();
+        int admin = 0;
 
         public Registration(MainWindow w)
         {
@@ -68,7 +69,7 @@ namespace Friendship_test
                 pass = Hashing.makeHash(passwordBoxFirst.Password);
                 var user = await VKParser.GetUser(textBoxVK.Text);
                 string newname =  user.FirstName + " " + user.LastName;
-                Person p = new Person { Login = textBoxLogin.Text, Name = newname, Vk = textBoxVK.Text, Password = pass.ToString(), Test = 1 };
+                Person p = new Person { Login = textBoxLogin.Text, Name = newname, Vk = textBoxVK.Text, Password = pass.ToString(), Test = admin};
                 q.AddPerson(p);
                 MessageBox.Show("Регистрация пройдена успешно");
                 Test test = new Test(p);
@@ -112,6 +113,39 @@ namespace Friendship_test
             if (e.Key == Key.Enter)
             {
                 buttonOK_Click(sender, e);
+            }
+        }
+
+        private void checkBoxAdmin_Checked(object sender, EventArgs e)
+        {
+            passwordBoxAdmin.IsEnabled = true;
+            buttonAdmin.IsEnabled = true;
+
+        }
+
+        private void checkBoxAdmin_Unchecked(object sender, EventArgs e)
+        {
+            passwordBoxAdmin.IsEnabled = false;
+            buttonAdmin.IsEnabled = false;
+        }
+
+        private void buttonAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            if (passwordBoxAdmin.Password == "iamadmin")
+            {
+                admin = 1;
+                MessageBox.Show("Подтверждение админства прошло успешно!");
+                passwordBoxAdmin.IsEnabled = false;
+                buttonAdmin.IsEnabled = false;
+                checkBoxAdmin.IsEnabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Неверный пароль для админства!");
+                passwordBoxAdmin.Clear();
+                passwordBoxAdmin.IsEnabled = false;
+                buttonAdmin.IsEnabled = false;
+                checkBoxAdmin.IsChecked = false;
             }
         }
     }
