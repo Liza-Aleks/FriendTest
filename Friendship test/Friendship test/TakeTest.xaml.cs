@@ -55,13 +55,13 @@ namespace Friendship_test
         {
             if (listBoxAnswers.SelectedItem != null)
             {
-                var questionsinTest = li.FindQuestioninTest(p);
+                var questionsinTest = li.FindQuestioninTest(friend);
                 var questions = li.FindQuestion(questionsinTest);
 
                 Answer friendanswer = (Answer)listBoxAnswers.SelectedItem;
                 Model.Test correct = questionsinTest.Find(x => x.ID_Question == friendanswer.ID_question);
                 Answer correctansw = db.Answer.ToList().Find(x => x.ID == correct.ID_Answer);
-                string correctanswer = correctansw.Text;
+                string correctanswer = "Правильный ответ: " + correctansw.Text;
                 if (friendanswer.ID == correct.ID_Answer)
                 {
                     MessageBox.Show("Правильно!!!");
@@ -78,7 +78,7 @@ namespace Friendship_test
 
                 buttonNext.IsEnabled = false;
 
-                if (temp == 2)
+                if (temp == 9)
                 {
                     buttonNext.Visibility = Visibility.Hidden;
                     buttonEnd.Visibility = Visibility.Visible;
@@ -90,13 +90,13 @@ namespace Friendship_test
         private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
 
-            var questionsinTest = li.FindQuestioninTest(p);
+            var questionsinTest = li.FindQuestioninTest(friend);
             var questions = li.FindQuestion(questionsinTest);
 
             Answer friendanswer = (Answer)listBoxAnswers.SelectedItem;
             Model.Test correct = questionsinTest.Find(x => x.ID_Question == friendanswer.ID_question);
             Answer correctansw = db.Answer.ToList().Find(x => x.ID == correct.ID_Answer);
-            string correctanswer = correctansw.Text;
+            string correctanswer = "Правильный ответ: "+ correctansw.Text;
             if (friendanswer.ID == correct.ID_Answer)
             {
                 MessageBox.Show("Правильно!!!");
@@ -105,6 +105,8 @@ namespace Friendship_test
             else
                 MessageBox.Show(correctanswer);
 
+            string point = "Вы набрали " + points;
+            MessageBox.Show(point);
             Result result = new Result { ID_PersonQuestioner = friend.ID, ID_PersonRespondent = p.ID, Points = points };
             q.AddResult(result);
             t.Main.Content = new Profile(p,t);
