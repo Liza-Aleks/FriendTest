@@ -41,12 +41,14 @@ namespace Friendship_test
             labelName.Content = p.Name;
             Model.Test tryy = new Model.Test();
             tryy = db.Test.ToList().Find(x => x.ID_Person==p.ID);
-
+            if (p.Test == 1)
+            {
+                buttonAddQuestion.Visibility = Visibility.Visible;
+            }
             if (db.Test.ToList().Contains(tryy))
              buttonCreateTest.Visibility = Visibility.Hidden;
             else
              buttonCreateTest.Visibility = Visibility.Visible;
-            
         }
 
         private void buttonCreateTest_Click(object sender, RoutedEventArgs e)
@@ -78,9 +80,13 @@ namespace Friendship_test
                 List<Result> results = li.FindResult(userfriend);
                 listBoxTop.Items.Clear();
                 if (results.Count() > 0)
+                {
                     listBoxTop.ItemsSource = results;
+                }
                 else
+                {
                     listBoxTop.Items.Add("Никто не прошел тест");
+                }
 
                 string tempname = userfriend.FirstName + " " + userfriend.LastName;
                 image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
@@ -98,13 +104,18 @@ namespace Friendship_test
                 }
 
                 if (userfriend.Online == 1)
+                {
                     labelOnline.Content = "Онлайн";
+                }
                 else
-                    labelOnline.Content = "";
+                {
+                    labelOnline.Content = "Оффлайн";
+                }
 
-                buttonCreateTest.Visibility = Visibility.Hidden;
                 buttonBackToPage.Visibility = Visibility.Visible;
                 buttonTakeTest.Visibility = Visibility.Visible;
+                buttonCreateTest.Visibility = Visibility.Hidden;
+                buttonAddQuestion.Visibility = Visibility.Hidden;
             }
         }
 
@@ -129,7 +140,7 @@ namespace Friendship_test
             if (user.Online == 1)
             labelOnline.Content = "Онлайн";
             else
-              labelOnline.Content = "";
+              labelOnline.Content = "Оффлайн";
 
             List<Result> results = li.FindResult(user);
             listBoxTop.Items.Clear();
@@ -177,6 +188,10 @@ namespace Friendship_test
 
             buttonBackToPage.Visibility = Visibility.Hidden;
             buttonTakeTest.Visibility = Visibility.Hidden;
+            if (p.Test == 1)
+            {
+                buttonAddQuestion.Visibility = Visibility.Visible;
+            }
         }
 
         private void buttonTakeTest_Click(object sender, RoutedEventArgs e)
