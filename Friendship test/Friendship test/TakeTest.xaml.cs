@@ -26,6 +26,7 @@ namespace Friendship_test
         Person friend;
         DBUsage q = new DBUsage();
         LINQmethods li = new LINQmethods();
+        FriendTestEntities db = new FriendTestEntities();
         int temp = 1;
         int points = 0;
 
@@ -59,7 +60,8 @@ namespace Friendship_test
 
                 Answer friendanswer = (Answer)listBoxAnswers.SelectedItem;
                 Model.Test correct = questionsinTest.Find(x => x.ID_Question == friendanswer.ID_question);
-                string correctanswer = "Правильный ответ: " + correct.Answer.Text;
+                Answer correctansw = db.Answer.ToList().Find(x => x.ID == correct.ID_Answer);
+                string correctanswer = correctansw.Text;
                 if (friendanswer.ID == correct.ID_Answer)
                 {
                     MessageBox.Show("Правильно!!!");
@@ -93,7 +95,8 @@ namespace Friendship_test
 
             Answer friendanswer = (Answer)listBoxAnswers.SelectedItem;
             Model.Test correct = questionsinTest.Find(x => x.ID_Question == friendanswer.ID_question);
-            string correctanswer = "Правильный ответ: " + correct.Answer.Text;
+            Answer correctansw = db.Answer.ToList().Find(x => x.ID == correct.ID_Answer);
+            string correctanswer = correctansw.Text;
             if (friendanswer.ID == correct.ID_Answer)
             {
                 MessageBox.Show("Правильно!!!");
