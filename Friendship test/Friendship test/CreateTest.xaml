@@ -22,8 +22,8 @@
 		</Grid.RowDefinitions>
 		<Label x:Name="labelQuestion" FontSize="20" Grid.ColumnSpan="2" Content="Выберите вопрос, а затем ответ. Всего 10 вопросов." Margin="20"/>
 		<Label x:Name="labelAnswer" FontSize="20" Content="Варианты ответа:" Grid.Column="2" Margin="20"/>
-        <ListBox x:Name="listBoxQuestions" DisplayMemberPath="Text" Grid.ColumnSpan="2" Margin="20" Grid.Row="1" SelectionChanged="listBoxQuestions_SelectionChanged"/>
-        <ListBox x:Name="listBoxAnswers" DisplayMemberPath="Text" Grid.Column="2" Margin="20" Grid.Row="1" SelectionChanged="listBoxAnswers_SelectionChanged"/>
+        <ListBox x:Name="listBoxQuestions" DisplayMemberPath="Text" FontSize="25" Grid.ColumnSpan="2" Margin="20" Grid.Row="1" SelectionChanged="listBoxQuestions_SelectionChanged"/>
+		<ListBox x:Name="listBoxAnswers" DisplayMemberPath="Text" FontSize="23" Grid.Column="2" Margin="20" Grid.Row="1" SelectionChanged="listBoxAnswers_SelectionChanged"/>
 		<Button x:Name="buttonBack" Background="PaleVioletRed" FontSize="24" Content="Назад" Margin="20" Grid.Row="2" Click="buttonBack_Click"/>
 		<Button x:Name="buttonEnd" Background="PaleVioletRed" IsEnabled="False" FontSize="24" Content="Завершить тест" Grid.Column="1" Margin="20" Grid.Row="2" Click="buttonEnd_Click"/>
 		<Button x:Name="buttonChoose" Background="PaleVioletRed" IsEnabled="False" FontSize="24" Content="Подвердить ответ" Grid.Column="2" Margin="20" Grid.Row="2" Click="buttonChoose_Click"/>
