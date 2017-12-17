@@ -30,6 +30,7 @@ namespace Friendship_test
         List<Person> people = new List<Person>();
         Person p = new Person();
         VKParser VKParser = new VKParser();
+        Model.Methods m = new Model.Methods();
         
 
         public Profile(Person per, Test tes)
@@ -77,16 +78,11 @@ namespace Friendship_test
             if (listBoxAllFriends.SelectedItem != null)
             {
                 User userfriend = (User)listBoxAllFriends.SelectedItem;
-                List<Result> results = li.FindResult(userfriend);
-                listBoxTop.Items.Clear();
+                var results = m.ShowTop(userfriend);
                 if (results.Count() > 0)
-                {
                     listBoxTop.ItemsSource = results;
-                }
-                else
-                {
-                    listBoxTop.Items.Add("Никто не прошел тест");
-                }
+                
+
 
                 string tempname = userfriend.FirstName + " " + userfriend.LastName;
                 image.Source = new BitmapImage(new Uri(userfriend.PhotoUrl));
@@ -157,12 +153,10 @@ namespace Friendship_test
             else
               labelOnline.Content = "Оффлайн";
 
-            List<Result> results = li.FindResult(user);
-            listBoxTop.Items.Clear();
+            var results = m.ShowTop(user);
             if (results.Count() > 0)
                 listBoxTop.ItemsSource = results;
-            else
-                listBoxTop.Items.Add("Никто не прошел тест");
+           
 
             image.Source = new BitmapImage(new Uri(user.PhotoUrl));
             
