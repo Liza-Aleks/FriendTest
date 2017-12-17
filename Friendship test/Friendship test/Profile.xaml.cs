@@ -199,12 +199,13 @@ namespace Friendship_test
             else
                 labelOnline.Content = "";
 
-            List<Result> results = li.FindResult(user);
+            var results = m.ShowTop(user);
 
             if (listBoxTop.Items.Count > 0)
                 listBoxTop.ItemsSource = (new List<ResultforOutput>());
 
-            listBoxTop.ItemsSource = results;
+            if (results.Count() > 0)
+                listBoxTop.ItemsSource = results;
 
             Model.Test tryy = new Model.Test();
             tryy = db.Test.ToList().Find(x => x.ID_Person == p.ID);

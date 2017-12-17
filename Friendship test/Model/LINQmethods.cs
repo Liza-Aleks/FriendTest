@@ -23,6 +23,7 @@ namespace Model
             return id;
 
         }
+
         public static bool CheckIfTestPassed(int idPerson, int idCreator)
         {
             using (var db = new FriendTestEntities())
@@ -37,6 +38,7 @@ namespace Model
                 return db.Test.Any(t => t.ID_Person == idPerson);
             }
         }
+
         public static void RemoveQuestion(Question que)
         {
             using (var db = new FriendTestEntities())
