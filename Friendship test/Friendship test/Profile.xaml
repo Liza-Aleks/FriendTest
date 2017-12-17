@@ -38,7 +38,18 @@
             </ListBox.ItemTemplate>
             <Button x:Name="button" Content="Button" Height="100" Width="75"/>
         </ListBox>
-        <ListBox x:Name="listBoxTop" FontSize="24" Grid.ColumnSpan="3" Grid.Column="1" Margin="0,0,20,0" Grid.Row="3"/>
+        <ListBox x:Name="listBoxTop" FontSize="24" Grid.ColumnSpan="3" Grid.Column="1" Margin="0,0,20,0" Grid.Row="3">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Margin="20 0 0 0">
+                            <TextBlock FontSize="20" Text="{Binding Name}"/>
+                            <TextBlock FontSize="20" Text="{Binding Points}"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Label x:Name="labelN" Content="Имя:" FontSize="25" Grid.Column="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="labelName" FontSize="25" Grid.Column="2" Margin="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Label x:Name="labelS" Content="Статус:" Visibility="Hidden" FontSize="25" Grid.Column="1" Grid.Row="1" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
