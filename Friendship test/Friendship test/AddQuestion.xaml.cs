@@ -105,9 +105,9 @@ namespace Friendship_test
             listBoxQuestions.ItemsSource = db.Question.ToList();
         }
 
-        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
-            
+            Close();
         }
     }
 }
